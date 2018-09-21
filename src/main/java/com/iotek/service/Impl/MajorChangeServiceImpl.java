@@ -129,7 +129,7 @@ public class MajorChangeServiceImpl implements MajorChangeService {
             result = humanFileDao.updateByHufId(oldHumanFile);
             if (result==1){
                 //将humanFile记录状态 修改为4：职位调动
-                oldHumanFile.setCheckStatus(4);
+                oldHumanFile.setHumanFileStatus(4);
                 //添加humanFileDig记录
                 result = humanFileDigDao.addHumanFileDig(oldHumanFile);
             }
