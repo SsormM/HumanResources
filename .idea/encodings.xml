@@ -20,7 +20,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/SalaryStandardDetailDaoMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/userMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/filter/FilterCharacterEncoding.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/filter/FilterLoginStaff.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/filter/FilterLogin.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/interceptors" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/pojo/DataGridResult.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/util" charset="GBK" />

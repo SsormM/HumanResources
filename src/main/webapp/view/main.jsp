@@ -226,7 +226,18 @@
                         <li><a href="view/SalaryStandard/select_salary_standard.jsp" target="mainframe"> <i
                                 class="icon-double-angle-right"></i> 薪酬标准查询
                         </a></li>
-                        <li><a href="/createSalaryGrant" target="mainframe"> <i
+
+                    </ul>
+                </li>
+
+                <li><a href="javascript:void(0)" target="mainframe"
+                       class="dropdown-toggle"> <i class="icon-desktop"></i> <span
+                        class="menu-text"> 薪酬发放管理 </span> <b class="arrow icon-angle-down"></b>
+                </a>
+
+                    <ul class="submenu">
+
+                        <li><a href="view/SalaryGrant/list_salary_grand.jsp" target="mainframe"> <i
                                 class="icon-double-angle-right"></i> 薪酬发放登记
                         </a></li>
                         <li><a href="view/SalaryGrant/check_list_salary_grand.jsp" target="mainframe"> <i
@@ -260,10 +271,10 @@
                 </a>
 
                     <ul class="submenu">
-                        <li><a href="view/student/student/student_list.html" target="mainframe"> <i
+                        <li><a href="view/developing.jsp" target="mainframe"> <i
                                 class="icon-double-angle-right"></i> 职位变更
                         </a></li>
-                        <li><a href="view/student/evaluationinfo/evaluationinfo_list.html" target="mainframe"> <i
+                        <li><a href="view/developing.jsp" target="mainframe"> <i
                                 class="icon-double-angle-right"></i> 职位查询
                         </a></li>
 

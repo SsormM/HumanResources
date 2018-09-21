@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>首页</title>
+    <title>调动审核</title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.css">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -27,10 +27,10 @@
         $(function () {
 
             $.getJSON("/showCheckMajorChange", "page=1&rows=10", function (result) {
-                alert("total:" + result.total);
+              /*  alert("total:" + result.total);
                 alert("CurrentPage:" + result.CurrentPage);
                 alert("pageCount:" + result.pageCount);
-                alert("rows:" + result.rows);
+                alert("rows:" + result.rows);*/
 
                 tbody = "<tr>" + "<th>序号</th>"+"<th>档案编号</th>"+"<th>姓名</th>" + "<th>一级机构</th>" + "<th>二级机构</th>" +
                      "<th>复核</th>" + "</tr>";
@@ -48,7 +48,8 @@
                     tbody += trs;
                 }
                 ;
-                $(".table").html(tbody);
+                $("#table").html("<table class=\"table table-condensed table-striped\">" +
+                    tbody + "</table>");
                 var currentPage = result.CurrentPage; //当前页数
                 var pageCount = result.pageCount; //总页数
                 var options = {
@@ -91,7 +92,8 @@
                                 tbody += trs;
                             }
                             ;
-                            $(".table").html(tbody);
+                            $("#table").html("<table class=\"table table-condensed table-striped\">" +
+                                tbody + "</table>");
                         })
                     }
                 };
@@ -107,13 +109,12 @@
 <body>
 <div style="padding:0px; margin:0px;">
     <ul class="breadcrumb" style="  margin:0px; ">
-        <li><a href="#">薪酬管理</a></li>
-        <li>薪酬发放复核</li>
+        <li><a href="#">调动管理</a></li>
+        <li>调动审核</li>
     </ul>
 </div>
-<div class="row" style="padding:15px; padding-top:0px; ">
-    <table class="table table-condensed table-striped">
-    </table>
+<div id="table" class="row" style="padding:15px; padding-top:0px; ">
+
     <div id="paginator" style="text-align: center">
         <ul id="pageLimit"></ul>
     </div>

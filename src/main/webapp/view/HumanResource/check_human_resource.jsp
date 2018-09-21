@@ -170,6 +170,12 @@
     </script>
 </head>
 <body>
+<div style="padding:0px; margin:0px;">
+    <ul class="breadcrumb" style="  margin:0px; ">
+        <li><a href="#">人力资源档案管理</a></li>
+        <li>人力资源档案复核</li>
+    </ul>
+</div>
 <div class="container-fluid">
 
     <div class="row-fluid">

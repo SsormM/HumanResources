@@ -34,15 +34,15 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
-  <!--&lt;!&ndash;管理员登录过滤器&ndash;&gt;
+  <!--登录过滤器-->
   <filter>
-      <filter-name>FilterLoginStaff</filter-name>
-      <filter-class>com.iotek.filter.FilterLoginStaff</filter-class>
+      <filter-name>FilterLogin</filter-name>
+      <filter-class>com.iotek.filter.FilterLogin</filter-class>
   </filter>
   <filter-mapping>
-      <filter-name>FilterLoginStaff</filter-name>
+      <filter-name>FilterLogin</filter-name>
       <url-pattern>/</url-pattern>
-  </filter-mapping>-->
+  </filter-mapping>
 
   <!--dispatcherServlet配置-->
   <servlet>

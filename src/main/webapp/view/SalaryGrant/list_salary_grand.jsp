@@ -8,12 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:if test="${empty requestScope.salaryGrant}">
+    <jsp:forward page="/createSalaryGrant"></jsp:forward>
+</c:if>
 <!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>首页</title>
+    <title>薪酬发放登记</title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.css">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -34,7 +37,7 @@
 
             $("th[name=salary]").each(function () {
                 var salary = $(this).text();
-                alert($(this).text());
+               /* alert($(this).text());*/
                 salaryTotal += parseFloat(salary);
                 $("#salary_standard_sum").text(salaryTotal + ", ");
                 $("input[name=salaryStandardSum]").val(salaryTotal);
@@ -48,10 +51,11 @@
 <body>
 <div style="padding:0px; margin:0px;">
     <ul class="breadcrumb" style="  margin:0px; ">
-        <li><a href="#">薪酬管理</a></li>
-        <li>员工管理</li>
+        <li><a href="#">薪酬发放管理</a></li>
+        <li>薪酬发放登记</li>
     </ul>
 </div>
+
 <div class="row alert alert-info" style="margin:0px; padding:3px;">
     <form class="form-horizontal">
         <div class="col-sm-1">条件:</div>

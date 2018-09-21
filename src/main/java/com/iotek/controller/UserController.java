@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -38,11 +39,13 @@ public class UserController {
     }
 
     @RequestMapping("/out")
-    public String out() {
+    public String out(SessionStatus sessionStatus) {
         HttpServletResponse response = ServletUtil.getResponse();
         HttpSession session = ServletUtil.getSession();
         Cookie[] cookies = ServletUtil.getCookise();
+        session.removeAttribute("user");
         session.invalidate();
+        sessionStatus.setComplete();
         for (Cookie cookie : cookies) {
             cookie.setMaxAge(-1);
             response.addCookie(cookie);

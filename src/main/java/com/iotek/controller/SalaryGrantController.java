@@ -108,8 +108,7 @@ public class SalaryGrantController {
         modelMap.addAttribute("humanFiles", humanFiles);
         modelMap.addAttribute("salaryGrantId", salaryGrantId);
         modelMap.addAttribute("size", humanFiles.size());
-        modelMap.addAttribute("firstKindName", humanFiles.get(0).getFirstKindName());
-        modelMap.addAttribute("secondKindName", humanFiles.get(0).getSecondKindName());
+
         Integer paidSum = salaryGrantService.queryPaidSum(salaryGrantId);
         if (paidSum != null) {
             modelMap.addAttribute("salaryPaidSum", paidSum);
@@ -121,6 +120,8 @@ public class SalaryGrantController {
         modelMap.addAttribute("sgrId", queryBySalaryGrantId.getSgrId());
         modelMap.addAttribute("register", queryBySalaryGrantId.getRegister());
         modelMap.addAttribute("checkTime", queryBySalaryGrantId.getCheckTime());
+        modelMap.addAttribute("firstKindName", queryBySalaryGrantId.getFirstKindName());
+        modelMap.addAttribute("secondKindName",queryBySalaryGrantId.getSecondKindName());
         SalaryGrant last = salaryGrantService.queryLast(queryBySalaryGrantId.getFirstKindName(),
                                                         queryBySalaryGrantId.getSecondKindName());
 

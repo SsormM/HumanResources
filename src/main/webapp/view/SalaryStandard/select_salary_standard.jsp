@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>人事查询</title>
+    <title>薪酬标准查询</title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -38,10 +38,13 @@
 
 <body>
 <div style="padding:0px; margin:0px;">
-    <ul class="breadcrumb" style="  margin:0px; ">
-        <li><a href="#">系统管理</a></li>
-        <li>员工管理</li>
-    </ul>
+    <div style="padding:0px; margin:0px;">
+        <ul class="breadcrumb" style="  margin:0px; ">
+            <li><a href="#">薪酬标准管理</a></li>
+            <li>薪酬标准查询</li>
+        </ul>
+    </div>
+
 </div>
 <form id="searchForm" class="form-horizontal">
     <div class="alert alert-info" style="margin:0px; padding:3px;">
@@ -85,20 +88,8 @@
 
 
 </form>
-<div class="row" style="padding:15px; padding-top:0px; ">
-    <table class="table table-condensed table-striped">
-        <%--<tr>
-            <th>档案编号</th>
-            <th>姓名</th>
-            <th>性别</th>
-            <th>一级机构</th>
-            <th>二级机构</th>
-            <th>三级机构</th>
-            <th>职称</th>
-            <th>复核</th>
-        </tr>--%>
+<div id="table" class="row" style="padding:15px; padding-top:0px; ">
 
-    </table>
 </div>
 <div class="row alert alert-info" style="margin:0px; padding:3px;">
     <form class="form-horizontal">
@@ -159,7 +150,8 @@
                 tbody += trs;
             }
             ;
-            $(".table").html(tbody);
+            $("#table").html("<table class=\"table table-condensed table-striped\">" +
+                tbody + "</table>");
             var currentPage = result.CurrentPage; //当前页数
             var pageCount = result.pageCount; //总页数
             var options = {
@@ -203,8 +195,9 @@
                                 "</tr>";
                             tbody += trs;
 
-                        }
-                        $(".table").html(tbody);
+                        };
+                        $("#table").html("<table class=\"table table-condensed table-striped\">" +
+                            tbody + "</table>");
                     })
                 }
             };

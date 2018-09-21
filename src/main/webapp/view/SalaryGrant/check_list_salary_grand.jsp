@@ -27,10 +27,10 @@
         $(function () {
 
             $.getJSON("/showCheckListSalaryGrant", "page=1&rows=10", function (result) {
-                alert("total:" + result.total);
+                /*alert("total:" + result.total);
                 alert("CurrentPage:" + result.CurrentPage);
                 alert("pageCount:" + result.pageCount);
-                alert("rows:" + result.rows);
+                alert("rows:" + result.rows);*/
 
                 tbody = "<tr>" + "<th>序号</th>" + "<th>一级机构</th>" + "<th>二级机构</th>" + "<th>人数</th>" +
                     "<th>基本薪酬总额(元)</th>" + "<th>复核</th>" + "</tr>";
@@ -43,13 +43,14 @@
                         "<td>" + result.rows[i].humanAmount + "</td>" +
                         "<td>" + result.rows[i].salaryPaidSum + "</td>" +
                         "<td><a href='/showSalaryGrantDetailsBySalaryGrantId?salaryGrantId=" +
-                        result.rows[i].salaryGantId + "&target=check_list_salary_grand_details'>查看</a>" +
+                        result.rows[i].salaryGrantId + "&target=check_list_salary_grand_details'>查看</a>" +
                         "</td>" +
                         "</tr>";
                     tbody += trs;
                 }
                 ;
-                $(".table").html(tbody);
+                $("#table").html("<table class=\"table table-condensed table-striped\">" +
+                    tbody + "</table>");
                 var currentPage = result.CurrentPage; //当前页数
                 var pageCount = result.pageCount; //总页数
                 var options = {
@@ -87,13 +88,14 @@
                                     "<td>" + result.rows[i].humanAmount + "</td>" +
                                     "<td>" + result.rows[i].salaryPaidSum + "</td>" +
                                     "<td><a href='/showSalaryGrantDetailsBySalaryGrantId?salaryGrantId=" +
-                                    result.rows[i].salaryGantId + "&target=check_list_salary_grand_details'>查看</a>" +
+                                    result.rows[i].salaryGrantId + "&target=check_list_salary_grand_details'>查看</a>" +
                                     "</td>" +
                                     "</tr>";
                                 tbody += trs;
                             }
                             ;
-                            $(".table").html(tbody);
+                            $("#table").html("<table class=\"table table-condensed table-striped\">" +
+                                tbody + "</table>");
                         })
                     }
                 };
@@ -113,9 +115,8 @@
         <li>薪酬发放复核</li>
     </ul>
 </div>
-<div class="row" style="padding:15px; padding-top:0px; ">
-    <table class="table table-condensed table-striped">
-    </table>
+<div id="table" class="row" style="padding:15px; padding-top:0px; ">
+
     <div id="paginator" style="text-align: center">
         <ul id="pageLimit"></ul>
     </div>

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>用户添加界面</title>
+    <title>人力资源档案登记</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
@@ -244,6 +244,12 @@
     </script>
 </head>
 <body>
+<div style="padding:0px; margin:0px;">
+    <ul class="breadcrumb" style="  margin:0px; ">
+        <li><a href="#">人力资源档案管理</a></li>
+        <li>人力资源档案登记</li>
+    </ul>
+</div>
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="table-responsive">

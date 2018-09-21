@@ -10,7 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>用户添加界面</title>
+    <title>人力资源档案修改</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../bootstrap-3.3.7-dist/css/bootstrap.css">
     <link href="../../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
@@ -181,6 +181,12 @@
     </script>
 </head>
 <body>
+<div style="padding:0px; margin:0px;">
+    <ul class="breadcrumb" style="  margin:0px; ">
+        <li><a href="#">人力资源档案管理</a></li>
+        <li>人力资源档案修改</li>
+    </ul>
+</div>
 <div class="container-fluid">
 
     <div class="row-fluid">
@@ -189,7 +195,7 @@
                 <input type="hidden" name="hufId" value="${requestScope.humanFile.hufId}">
                 <input type="hidden" name="changer" value="${sessionScope.user.uName}">
                 <table class="table table-bordered" STYLE="background-color:rgba(114,202,204,0.8)">
-                    <caption><h1 style="display: block;float:left;width: 50%">人力资源资源档案登记</h1>
+                    <caption><h1 style="display: block;float:left;width: 50%">人力资源档案修改</h1>
                         <a type="button" style="float:right;width:200px;height:50px;margin: 20px;font-size: 20px"
                            href="view/HumanResource/select_human_resource.jsp"
                            name="uncomplete"

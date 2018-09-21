@@ -12,7 +12,7 @@
 <c:set var="salary_sum" value="0"/>
 <html>
 <head>
-    <title>用户添加界面</title>
+    <title>薪酬标准复核</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
@@ -67,12 +67,18 @@
     </script>
 </head>
 <body>
+<div style="padding:0px; margin:0px;">
+    <ul class="breadcrumb" style="  margin:0px; ">
+        <li><a href="#">薪酬标准管理</a></li>
+        <li>薪酬标准复核</li>
+    </ul>
+</div>
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="table-responsive">
             <form action="" method="post" role="form" id="salaryStandardForm">
                 <table class="table table-bordered" STYLE="background-color:rgba(114,202,204,0.8)">
-                    <caption><h1 style="display: block;float:left;width: 50%">人力资源资源档案登记</h1>
+                    <caption><h1 style="display: block;float:left;width: 50%">薪酬标准复核</h1>
                         <input type="button" style="float:right;width:200px;height:50px;margin: 20px;font-size: 20px"
                                name="uncomplete"
                                class="btn btn-danger" value="不通过"/>

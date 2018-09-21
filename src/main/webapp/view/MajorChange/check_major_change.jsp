@@ -11,7 +11,7 @@
 <jsp:useBean id="time" class="java.util.Date"/>
 <html>
 <head>
-    <title>用户添加界面</title>
+    <title>调动审核</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../bootstrap-3.3.7-dist/css/bootstrap.css">
     <link href="../../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
@@ -121,11 +121,12 @@
             })
 
             $.getJSON("/showAllSalaryStandard", "", function (result) {
-                $("#salary_standard_id").html("");
                 for (var i = 0; i < result.length; i++) {
-                    $("#salary_standard_id").append(
-                        "<option value='" + result[i].standardId + "'>" + result[i].standardName + "</option>"
-                    )
+                    if (result[i].salaryStandardId != $("#salary_standard_id").val()) {
+                        $("#salary_standard_id").append(
+                            "<option value='" + result[i].standardId + "'>" + result[i].standardName + "</option>"
+                        )
+                    }
                 }
             })
 
@@ -143,6 +144,12 @@
     </script>
 </head>
 <body>
+<div style="padding:0px; margin:0px;">
+    <ul class="breadcrumb" style="  margin:0px; ">
+        <li><a href="#">调动管理</a></li>
+        <li>调动审核</li>
+    </ul>
+</div>
 <div class="container-fluid">
 
     <div class="row-fluid">
@@ -151,11 +158,10 @@
                 <input type="hidden" name="mchId" value="${requestScope.majorChange.mchId}">
                 <table class="table table-bordered" STYLE="background-color:rgba(114,202,204,0.8)">
                     <caption><h1 style="display: block;float:left;width: 50%">人力资源职位变更登记</h1>
-                        <a type="button" style="float:right;width:200px;height:50px;margin: 20px;font-size: 20px"
-                           href="view/MajorChange/search_human_resource.jsp"
-                           name="uncomplete"
-                           class="btn btn-danger">取消</a>
-                        <input type="submit" style="float:right;width:200px;height:50px;margin: 20px;font-size: 20px"
+                        <input type="button" style="float:right;width:200px;height:50px;margin: 20px;font-size: 20px"
+                               name="uncomplete"
+                               class="btn btn-danger" value="取消"></input>
+                        <input type="button" style="float:right;width:200px;height:50px;margin: 20px;font-size: 20px"
                                name="complete"
                                class="btn btn-success" value="提交"/>
                     </caption>
@@ -253,7 +259,8 @@
                     <tr>
                         <th><span>调动原因</span></th>
                         <td colspan="7"><textarea name="changeReason" id="change_reason" readonly
-                                                  style="resize:none;font-size: 20px;" cols="150" rows="10"></textarea>
+                                                  style="resize:none;font-size: 20px;" cols="150"
+                                                  rows="10">${requestScope.majorChange.changeReason}</textarea>
                         </td>
                     </tr>
                     <tr>

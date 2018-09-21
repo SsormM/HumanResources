@@ -40,6 +40,12 @@
     </script>
 </head>
 <body>
+<div style="padding:0px; margin:0px;">
+    <ul class="breadcrumb" style="  margin:0px; ">
+        <li><a href="#">人力资源档案管理</a></li>
+        <li>人力资源档案查询</li>
+    </ul>
+</div>
 <div class="container-fluid">
 
     <div class="row-fluid">
@@ -48,7 +54,7 @@
                 <input type="hidden" name="hufId" value="${requestScope.humanFile.hufId}">
                 <input type="hidden" name="checker" value="${sessionScope.user.uName}">
                 <table class="table table-bordered" STYLE="background-color:rgba(114,202,204,0.8)">
-                    <caption><h1 style="display: block;float:left;width: 50%">人力资源资源档案登记</h1>
+                    <caption><h1 style="display: block;float:left;width: 50%">人力资源资源档案</h1>
                         <div class="row">
                             <input type="button" style="float:right;width:200px;height:50px;margin: 20px;font-size: 20px"
                                    name="delete"

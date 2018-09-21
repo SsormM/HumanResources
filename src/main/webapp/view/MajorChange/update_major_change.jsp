@@ -11,7 +11,7 @@
 <jsp:useBean id="time" class="java.util.Date"/>
 <html>
 <head>
-    <title>用户添加界面</title>
+    <title>调动登记</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../bootstrap-3.3.7-dist/css/bootstrap.css">
     <link href="../../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
@@ -124,13 +124,19 @@
     </script>
 </head>
 <body>
+<div style="padding:0px; margin:0px;">
+    <ul class="breadcrumb" style="  margin:0px; ">
+        <li><a href="#">调动管理</a></li>
+        <li>调动登记</li>
+    </ul>
+</div>
 <div class="container-fluid">
 
     <div class="row-fluid">
         <div class="table-responsive">
             <form action="/addMajorChange" method="post" role="form" id="majorChangeForm">
                 <table class="table table-bordered" STYLE="background-color:rgba(114,202,204,0.8)">
-                    <caption><h1 style="display: block;float:left;width: 50%">人力资源职位变更登记</h1>
+                    <caption><h1 style="display: block;float:left;width: 50%">调动登记</h1>
                         <a type="button" style="float:right;width:200px;height:50px;margin: 20px;font-size: 20px"
                            href="view/MajorChange/search_human_resource.jsp"
                            name="uncomplete"

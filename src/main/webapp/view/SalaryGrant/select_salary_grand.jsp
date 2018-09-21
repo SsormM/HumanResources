@@ -85,20 +85,8 @@
 
 
 </form>
-<div class="row" style="padding:15px; padding-top:0px; ">
-    <table class="table table-condensed table-striped">
-        <%--<tr>
-            <th>档案编号</th>
-            <th>姓名</th>
-            <th>性别</th>
-            <th>一级机构</th>
-            <th>二级机构</th>
-            <th>三级机构</th>
-            <th>职称</th>
-            <th>复核</th>
-        </tr>--%>
+<div id="table" class="row" style="padding:15px; padding-top:0px; ">
 
-    </table>
 </div>
 <div class="row alert alert-info" style="margin:0px; padding:3px;">
     <form class="form-horizontal">
@@ -137,10 +125,10 @@
 
     $("#search").click(function () {
         $.getJSON("/searchSalaryGrant", $('#searchForm').serialize() + "&page=1&rows=10", function (result) {
-            alert("total:" + result.total);
+          /*  alert("total:" + result.total);
             alert("CurrentPage:" + result.CurrentPage);
             alert("pageCount:" + result.pageCount);
-            alert("rows:" + result.rows);
+            alert("rows:" + result.rows);*/
             tbody = "<tr>" + "<th>序号</th>" + "<th>薪酬单号</th>" + "<th>一级机构</th>" + "<th>二级机构</th>" + "<th>人数</th>" +
                 "<th>实发薪酬总额(元)</th>" + "<th>发放日期</th>" + "<th>查看详情</th>" + "</tr>";
             for (var i = 0; i < result.rows.length; i++) {
@@ -160,7 +148,8 @@
                 tbody += trs;
             }
             ;
-            $(".table").html(tbody);
+            $("#table").html("<table class=\"table table-condensed table-striped\">" +
+                tbody + "</table>");
             var currentPage = result.CurrentPage; //当前页数
             var pageCount = result.pageCount; //总页数
             var options = {
@@ -206,7 +195,8 @@
                             tbody += trs;
                         }
                         ;
-                        $(".table").html(tbody);
+                        $("#table").html("<table class=\"table table-condensed table-striped\">" +
+                            tbody + "</table>");
                     })
                 }
             };
