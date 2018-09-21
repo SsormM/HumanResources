@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.ConfigFileFirstKindDao">
+
+    <resultMap id="ConfigFileFirstKindMap" type="ConfigFileFirstKind">
+        <id column="ffk_id" property="ffkId"/>
+        <result column="first_kind_id" property="firstKindId"/>
+        <result column="first_kind_name" property="firstKindName"/>
+        <result column="first_kind_salary_id" property="firstKindSalaryId"/>
+        <result column="first_kind_sale_id" property="firstKindSaleId"/>
+    </resultMap>
+
+    <select id="queryAll" resultMap="ConfigFileFirstKindMap">
+        select ffk_id,first_kind_id,first_kind_name,first_kind_salary_id,first_kind_sale_id
+        from config_file_first_kind ;
+    </select>
+
+    <select id="queryByFirstId" resultMap="ConfigFileFirstKindMap" parameterType="Integer">
+        select ffk_id,first_kind_id,first_kind_name,first_kind_salary_id,first_kind_sale_id
+        from config_file_first_kind where first_kind_id=#{firstKindId};
+    </select>
+
+
+
+
+</mapper>

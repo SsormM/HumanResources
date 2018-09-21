@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.ConfigMajorDao">
+
+    <resultMap id="ConfigMajorMap" type="ConfigMajor">
+        <id column="mak_id" property="makId"/>
+        <result column="major_kind_id" property="majorKindId"/>
+        <result column="major_kind_name" property="majorKindName"/>
+        <result column="major_id" property="majorId"/>
+        <result column="major_name" property="majorName"/>
+        <result column="test_amount" property="testAmount"/>
+</resultMap>
+
+    <select id="queryById" resultMap="ConfigMajorMap" parameterType="Integer">
+        select mak_id,major_kind_id,major_kind_name,major_id,major_name,test_amount
+        from config_major where major_kind_id=#{kindId};
+    </select>
+
+    <select id="queryByKindIdAndId" resultMap="ConfigMajorMap" >
+        select mak_id,major_kind_id,major_kind_name,major_id,major_name,test_amount
+        from config_major where major_kind_id=#{kindId} and major_id=#{majorId} ;
+    </select>
+
+
+
+
+</mapper>

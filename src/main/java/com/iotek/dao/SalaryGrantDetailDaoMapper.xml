@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.SalaryGrantDetailDao">
+
+    <resultMap id="SalaryGrantDetailMap" type="SalaryGrantDetail">
+        <id column="grd_id" property="grdId"/>
+        <result column="salary_grant_id" property="salaryGrantId"/>
+        <result column="human_id" property="humanId"/>
+        <result column="human_name" property="humanName"/>
+        <result column="bouns_sum" property="bounsSum"/>
+        <result column="sale_sum" property="saleSum"/>
+        <result column="deduct_sum" property="deductSum"/>
+        <result column="salary_standard_sum" property="salaryStandardSum"/>
+        <result column="salary_paid_sum" property="salaryPaidSum"/>
+    </resultMap>
+
+
+    <insert id="addSalaryGrantDetail" parameterType="SalaryGrantDetail">
+        insert into salary_grant_details (salary_grant_id,human_id,human_name,bouns_sum,sale_sum,deduct_sum,
+        salary_standard_sum,salary_paid_sum)
+        values (#{salaryGrantId},#{humanId},#{humanName},#{bounsSum},#{saleSum},#{deductSum},#{salaryStandardSum},#{salaryPaidSum});
+    </insert>
+
+    <select id="queryByHumanId" parameterType="String" resultMap="SalaryGrantDetailMap">
+        select grd_id,salary_grant_id,human_id,human_name,bouns_sum,sale_sum,deduct_sum,salary_standard_sum,salary_paid_sum
+        from salary_grant_details where human_id = #{humanId}
+    </select>
+
+    <update id="update" parameterType="SalaryGrantDetail">
+        update salary_grant_details
+        set bouns_sum = #{bounsSum},sale_sum = #{saleSum},deduct_sum = #{deductSum},salary_paid_sum = #{salaryPaidSum}
+        where grd_id = #{grdId};
+    </update>
+
+    <select id="queryPaidSum" parameterType="String" resultType="Integer">
+        select sum(salary_paid_sum) from salary_grant_details where salary_grant_id = #{salaryGrantId}
+    </select>
+
+    <select id="queryBySalaryGrantId" resultMap="SalaryGrantDetailMap" parameterType="String">
+        select grd_id,salary_grant_id,human_id,human_name,bouns_sum,sale_sum,deduct_sum,salary_standard_sum,salary_paid_sum
+        from salary_grant_details where salary_grant_id = #{salaryGrantId}
+    </select>
+</mapper>

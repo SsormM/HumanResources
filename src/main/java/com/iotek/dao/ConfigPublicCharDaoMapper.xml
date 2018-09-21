@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.ConfigPublicCharDao">
+
+    <resultMap id="ConfigPublicCharMap" type="ConfigPublicChar">
+        <id column="pbc_id" property="pbcId"/>
+        <result column="attribute_kind" property="attributeKind"/>
+        <result column="attribute_name" property="attributeName"/>
+    </resultMap>
+
+    <select id="queryByAttributeKind" resultMap="ConfigPublicCharMap" parameterType="String">
+        select pbc_id,attribute_kind,attribute_name
+        from config_public_char where attribute_kind=#{attributeKind};
+    </select>
+
+
+
+
+</mapper>

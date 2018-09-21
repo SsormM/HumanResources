@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.UserDao">
+
+    <resultMap id="UserMap" type="User">
+        <id column="u_id" property="uId"/>
+        <result column="u_name" property="uName"/>
+        <result column="u_true_name" property="uTrueName"/>
+        <result column="u_password" property="uPassword"/>
+    </resultMap>
+
+    <select id="queryUserByNameAndPassword" parameterType="User" resultMap="UserMap">
+        select u_id,u_name,u_true_name,u_password from users where u_name=#{uName} and u_password=#{uPassword};
+    </select>
+
+
+
+
+</mapper>

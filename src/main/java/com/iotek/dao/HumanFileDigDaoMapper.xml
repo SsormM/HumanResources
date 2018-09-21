@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iotek.dao.HumanFileDigDao">
+
+  <resultMap id="HumanFileMap" type="HumanFile">
+    <id column="huf_id" property="hufId"/>
+    <result column="human_id" property="humanId"/>
+    <result column="first_kind_id" property="firstKindId"/>
+    <result column="first_kind_name" property="firstKindName"/>
+    <result column="second_kind_id" property="secondKindId"/>
+    <result column="second_kind_name" property="secondKindName"/>
+    <result column="third_kind_id" property="thirdKindId"/>
+    <result column="third_kind_name" property="thirdKindName"/>
+    <result column="human_name" property="humanName"/>
+    <result column="human_address" property="humanAddress"/>
+    <result column="human_postcode" property="humanPostcode"/>
+    <result column="human_pro_designation" property="humanProDesignation"/>
+    <result column="human_major_kind_id" property="humanMajorKindId"/>
+    <result column="human_major_kind_name" property="humanMajorKindName"/>
+    <result column="human_major_id" property="humanMajorId"/>
+    <result column="hunma_major_name" property="hunmaMajorName"/>
+    <result column="human_telephone" property="humanTelephone"/>
+    <result column="human_mobilephone" property="humanMobilephone"/>
+    <result column="human_bank" property="humanBank"/>
+    <result column="human_account" property="humanAccount"/>
+    <result column="human_qq" property="humanQq"/>
+    <result column="human_email" property="humanEmail"/>
+    <result column="human_hobby" property="humanHobby"/>
+    <result column="human_speciality" property="humanSpeciality"/>
+    <result column="human_sex" property="humanSex"/>
+    <result column="human_religion" property="humanReligion"/>
+    <result column="human_party" property="humanParty"/>
+    <result column="human_nationality" property="humanNationality"/>
+    <result column="human_race" property="humanRace"/>
+    <result column="human_birthday" property="humanBirthday"/>
+    <result column="human_birthplace" property="humanBirthplace"/>
+    <result column="human_age" property="humanAge"/>
+    <result column="human_educated_degree" property="humanEducatedDegree"/>
+    <result column="human_educated_years" property="humanEducatedYears"/>
+    <result column="human_educated_major" property="humanEducatedMajor"/>
+    <result column="human_society_security_id" property="humanSocietySecurityId"/>
+    <result column="human_id_card" property="humanIdCard"/>
+    <result column="remark" property="remark"/>
+    <result column="salary_standard_id" property="salaryStandardId"/>
+    <result column="salary_standard_name" property="salaryStandardName"/>
+    <result column="salary_sum" property="salarySum"/>
+    <result column="demand_salaray_sum" property="demandSalaraySum"/>
+    <result column="paid_salary_sum" property="paidSalarySum"/>
+    <result column="major_change_amount" property="majorChangeAmount"/>
+    <result column="bonus_amount" property="bonusAmount"/>
+    <result column="training_amount" property="trainingAmount"/>
+    <result column="file_chang_amount" property="fileChangAmount"/>
+    <result column="human_histroy_records" property="humanHistroyRecords"/>
+    <result column="human_family_membership" property="humanFamilyMembership"/>
+    <result column="human_picture" property="humanPicture"/>
+    <result column="attachment_name" property="attachmentName"/>
+    <result column="check_status" property="checkStatus"/>
+    <result column="register" property="register"/>
+    <result column="checker" property="checker"/>
+    <result column="changer" property="changer"/>
+    <result column="regist_time" property="registTime"/>
+    <result column="check_time" property="checkTime"/>
+    <result column="change_time" property="changeTime"/>
+    <result column="lastly_change_time" property="lastlyChangeTime"/>
+    <result column="delete_time" property="deleteTime"/>
+    <result column="recovery_time" property="recoveryTime"/>
+    <result column="human_file_status" property="humanFileStatus"/>
+  </resultMap>
+
+  <insert id="addHumanFileDig" parameterType="HumanFile">
+        insert into human_file_dig (human_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+        human_name,human_address,human_postcode,human_pro_designation,human_major_kind_id,human_major_kind_name,human_major_id,hunma_major_name,
+        human_telephone,human_mobilephone,human_bank,human_account,human_qq,human_email,human_hobby,human_speciality,human_sex,human_religion,
+        human_party,human_nationality,human_race,human_birthday,human_birthplace,human_age,human_educated_degree,human_educated_years,human_educated_major,
+        human_society_security_id,human_id_card,remark,salary_standard_id,salary_standard_name,salary_sum,demand_salaray_sum,paid_salary_sum,major_change_amount,
+        bonus_amount,training_amount,file_chang_amount,human_histroy_records,human_family_membership,human_picture,attachment_name,check_status,register,checker,
+        changer,regist_time,check_time,change_time,lastly_change_time,delete_time,recovery_time,human_file_status)
+        values (#{humanId},#{firstKindId},#{firstKindName},#{secondKindId},#{secondKindName},#{thirdKindId},#{thirdKindName},
+        #{humanName},#{humanAddress},#{humanPostcode},#{humanProDesignation},#{humanMajorKindId},#{humanMajorKindName},#{humanMajorId},#{hunmaMajorName},
+        #{humanTelephone},#{humanMobilephone},#{humanBank},#{humanAccount},#{humanQq},#{humanEmail},#{humanHobby},#{humanSpeciality},#{humanSex},#{humanReligion},
+        #{humanParty},#{humanNationality},#{humanRace},#{humanBirthday},#{humanBirthplace},#{humanAge},#{humanEducatedDegree},#{humanEducatedYears},#{humanEducatedMajor},
+        #{humanSocietySecurityId},#{humanIdCard},#{remark},#{salaryStandardId},#{salaryStandardName},#{salarySum},#{demandSalaraySum},#{paidSalarySum},#{majorChangeAmount},
+        #{bonusAmount},#{trainingAmount},#{fileChangAmount},#{humanHistroyRecords},#{humanFamilyMembership},#{humanPicture},#{attachmentName},#{checkStatus},#{register},#{checker},
+        #{changer},#{registTime},#{checkTime},#{changeTime},#{lastlyChangeTime},#{deleteTime},#{recoveryTime},#{humanFileStatus})
+    </insert>
+
+
+</mapper>

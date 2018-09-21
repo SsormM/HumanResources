@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.ConfigMajorKindDao">
+
+    <resultMap id="ConfigMajorKindMap" type="ConfigMajorKind">
+        <id column="mfk_id" property="mfkId"/>
+        <result column="major_kind_id" property="majorKindId"/>
+        <result column="major_kind_name" property="majorKindName"/>
+    </resultMap>
+
+    <select id="queryAll" resultMap="ConfigMajorKindMap">
+        select mfk_id,major_kind_id,major_kind_name
+        from config_major_kind;
+    </select>
+
+    <select id="queryById" resultMap="ConfigMajorKindMap" parameterType="Integer">
+        select mfk_id,major_kind_id,major_kind_name
+        from config_major_kind where major_kind_id=#{majorKindId};
+    </select>
+
+
+
+
+</mapper>

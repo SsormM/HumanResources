@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.SalaryStandardDao">
+
+    <resultMap id="SalaryStandardMap" type="SalaryStandard">
+        <id column="ssd_id" property="ssdId"/>
+        <result column="standard_id" property="standardId"/>
+        <result column="standard_name" property="standardName"/>
+        <result column="designer" property="designer"/>
+        <result column="register" property="register"/>
+        <result column="checker" property="checker"/>
+        <result column="changer" property="changer"/>
+        <result column="regist_time" property="registTime"/>
+        <result column="check_time" property="checkTime"/>
+        <result column="change_time" property="changeTime"/>
+        <result column="salary_sum" property="salarySum"/>
+        <result column="check_status" property="checkStatus"/>
+        <result column="change_status" property="changeStatus"/>
+        <result column="check_comment" property="checkComment"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <insert id="addSalaryStandard" parameterType="SalaryStandard">
+        insert into salary_standard (standard_id,standard_name,designer,register,checker,changer,regist_time,check_time,
+        change_time,salary_sum,check_status,change_status,check_comment,remark)
+        values (#{standardId},#{standardName},#{designer},#{register},#{checker},#{changer},#{registTime},#{checkTime},
+        #{changeTime},#{salarySum},#{checkStatus},#{changeStatus},#{checkComment},#{remark});
+    </insert>
+
+    <select id="queryStandardId" resultMap="SalaryStandardMap">
+       select ssd_id,standard_id,standard_name,designer,register,checker,changer,regist_time,check_time,
+       change_time,salary_sum,check_status,change_status,check_comment,remark from salary_standard
+       WHERE ssd_id=(SELECT MAX(ssd_id) FROM salary_standard);
+    </select>
+
+    <select id="queryAllList" resultMap="SalaryStandardMap">
+       select ssd_id,standard_id,standard_name,designer,register,checker,changer,regist_time,check_time,
+       change_time,salary_sum,check_status,change_status,check_comment,remark from salary_standard
+       WHERE check_status=1;
+    </select>
+
+    <select id="queryAll" resultMap="SalaryStandardMap">
+       select ssd_id,standard_id,standard_name,designer,register,checker,changer,regist_time,check_time,
+       change_time,salary_sum,check_status,change_status,check_comment,remark from salary_standard
+       WHERE check_status=0 limit #{beginIndex},#{rows};
+    </select>
+
+    <select id="countRows" resultType="Integer">
+       select count(*) from salary_standard WHERE check_status=0;
+    </select>
+
+    <select id="querySalaryStandardById" resultMap="SalaryStandardMap" parameterType="String">
+       select ssd_id,standard_id,standard_name,designer,register,checker,changer,regist_time,check_time,
+       change_time,salary_sum,check_status,change_status,check_comment,remark from salary_standard
+       WHERE standard_id = #{standardId};
+    </select>
+
+    <update id="update" parameterType="SalaryStandard">
+        update salary_standard
+        <set>
+            <if test="standardName != null">standard_name = #{standardName},</if>
+            <if test="designer != null">designer = #{designer},</if>
+            <if test="register != null">register = #{register},</if>
+            <if test="checker != null">checker = #{checker},</if>
+            <if test="changer != null">changer = #{changer},</if>
+            <if test="registTime != null">regist_time = #{registTime},</if>
+            <if test="checkTime != null">check_time = #{checkTime},</if>
+            <if test="changeTime != null">change_time = #{changeTime},</if>
+            <if test="salarySum != null">salary_sum = #{salarySum},</if>
+            <if test="checkStatus != null">check_status = #{checkStatus},</if>
+            <if test="changeStatus != null">change_status = #{changeStatus},</if>
+            <if test="checkComment != null">check_comment = #{checkComment},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </set>
+        where standard_id = #{standardId};
+    </update>
+
+    <select id="queryByCondition" resultMap="SalaryStandardMap">
+       select ssd_id,standard_id,standard_name,designer,register,checker,changer,regist_time,check_time,
+       change_time,salary_sum,check_status,change_status,check_comment,remark from salary_standard
+        <where>
+            check_status=1
+            <if test="standardId!=null and standardId!=''">
+                and standard_id = #{standardId}
+            </if>
+            <choose>
+                <when test="beginTime!=null">
+                    and regist_time <![CDATA[ > ]]> #{beginTime}
+                </when>
+                <when test="endTime!=null">
+                    and regist_time <![CDATA[ < ]]> #{endTime}
+                </when>
+                <when test="beginTime!=null and endTime!=null">
+                    and regist_time between #{beginTime} and #{endTime}
+                </when>
+            </choose>
+        </where>
+        order by ssd_id desc limit #{beginIndex},#{rows} ;
+    </select>
+
+    <select id="countRowsByCondition" resultType="Integer">
+       select count(*) from salary_standard
+        <where>
+            check_status=1
+            <if test="standardId!=null and standardId!=''">
+                and standard_id = #{standardId}
+            </if>
+            <choose>
+                <when test="beginTime!=null">
+                    and regist_time <![CDATA[ > ]]> #{beginTime}
+                </when>
+                <when test="endTime!=null">
+                    and regist_time <![CDATA[ < ]]> #{endTime}
+                </when>
+                <when test="beginTime!=null and endTime!=null">
+                    and regist_time between #{beginTime} and #{endTime}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+</mapper>

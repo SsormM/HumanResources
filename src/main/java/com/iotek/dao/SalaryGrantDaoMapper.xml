@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.SalaryGrantDao">
+
+    <resultMap id="SalaryGrantMap" type="SalaryGrant">
+        <id column="sgr_id" property="sgrId"/>
+        <result column="salary_grant_id" property="salaryGrantId"/>
+        <result column="salary_standard_id" property="salaryStandId"/>
+        <result column="first_kind_id" property="firstKindId"/>
+        <result column="first_kind_name" property="firstKindName"/>
+        <result column="second_kind_id" property="secondKindId"/>
+        <result column="second_kind_name" property="secondKindName"/>
+        <result column="third_kind_id" property="thirdKindId"/>
+        <result column="third_kind_name" property="thirdKindName"/>
+        <result column="human_amount" property="humanAmount"/>
+        <result column="salary_standard_sum" property="salaryStandardSum"/>
+        <result column="salary_paid_sum" property="salaryPaidSum"/>
+        <result column="register" property="register"/>
+        <result column="regist_time" property="registTime"/>
+        <result column="checker" property="checker"/>
+        <result column="check_time" property="checkTime"/>
+        <result column="check_status" property="checkStatus"/>
+    </resultMap>
+
+
+    <select id="querySalaryGrantId" resultMap="SalaryGrantMap">
+       select sgr_id,salary_grant_id,salary_standard_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+       human_amount,salary_standard_sum,salary_paid_sum,register,regist_time,checker,check_time,check_status from salary_grant
+       WHERE sgr_id=(SELECT MAX(sgr_id) FROM salary_grant);
+    </select>
+
+    <select id="queryLast" resultMap="SalaryGrantMap">
+       select sgr_id,salary_grant_id,salary_standard_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+       human_amount,salary_standard_sum,salary_paid_sum,register,regist_time,checker,check_time,check_status from salary_grant
+       WHERE sgr_id=(SELECT MAX(sgr_id) FROM salary_grant where check_status = 1 and  first_kind_name = #{firstKindName} and second_kind_name = #{secondKindName});
+    </select>
+
+
+    <select id="queryAllCount" resultType="Integer">
+       select count(*) from salary_grant;
+    </select>
+
+    <insert id="add" parameterType="salaryGrant">
+        insert into salary_grant (salary_grant_id,salary_standard_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,
+        third_kind_id,third_kind_name,human_amount,salary_standard_sum,salary_paid_sum,register,regist_time,checker,check_time,check_status)
+        values (#{salaryGrantId},#{salaryStandardId},#{firstKindId},#{firstKindName},#{secondKindId},#{secondKindName},
+        #{thirdKindId},#{thirdKindName},#{humanAmount},#{salaryStandardSum},#{salaryPaidSum},#{register},#{registTime},
+        #{checker},#{checkTime},#{checkStatus});
+    </insert>
+
+    <select id="queryBySalaryGrantId" resultMap="SalaryGrantMap" parameterType="SalaryGrant">
+       select sgr_id,salary_grant_id,salary_standard_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+       human_amount,salary_standard_sum,salary_paid_sum,register,regist_time,checker,check_time,check_status from salary_grant
+       WHERE salary_grant_id = #{salaryGrantId}
+    </select>
+
+    <update id="update" parameterType="SalaryGrant">
+        update salary_grant
+        <set>
+            <if test="salaryGrantId != null">salary_grant_id = #{salaryGrantId},</if>
+
+            <if test="salaryStandardId != null">salary_standard_id = #{salaryStandardId},</if>
+
+            <if test="firstKindId != null">first_kind_id = #{firstKindId},</if>
+
+            <if test="firstKindName != null">first_kind_name = #{firstKindName},</if>
+
+            <if test="secondKindId != null">second_kind_id = #{secondKindId},</if>
+
+            <if test="secondKindName != null">second_kind_name = #{secondKindName},</if>
+
+            <if test="thirdKindId != null">third_kind_id = #{thirdKindId},</if>
+
+            <if test="thirdKindName != null">third_kind_name = #{thirdKindName},</if>
+
+            <if test="humanAmount != null">human_amount = #{humanAmount},</if>
+
+            <if test="salaryStandardSum != null">salary_standard_sum = #{salaryStandardSum},</if>
+
+            <if test="salaryPaidSum != null">salary_paid_sum = #{salaryPaidSum},</if>
+
+            <if test="register != null">register = #{register},</if>
+
+            <if test="registTime != null">regist_time = #{registTime},</if>
+
+            <if test="checker != null">checker = #{checker},</if>
+
+            <if test="checkTime != null">check_time = #{checkTime},</if>
+
+            <if test="checkStatus != null">check_status = #{checkStatus},</if>
+        </set>
+        WHERE sgr_id = #{sgrId}
+    </update>
+
+    <select id="queryALLSalaryGrant" resultMap="SalaryGrantMap">
+       select sgr_id,salary_grant_id,salary_standard_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+       human_amount,salary_standard_sum,salary_paid_sum,register,regist_time,checker,check_time,check_status
+       from salary_grant where check_status=0 limit #{beginIndex},#{rows}
+    </select>
+
+    <select id="countRows" resultType="Integer">
+       select count(*) from salary_grant where check_status=0;
+    </select>
+
+    <select id="queryByCondition" resultMap="SalaryGrantMap">
+        select sgr_id,salary_grant_id,salary_standard_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+        human_amount,salary_standard_sum,salary_paid_sum,register,regist_time,checker,check_time,check_status from salary_grant
+        <where>
+            check_status=1
+            <if test="salaryGrantId!=null and salaryGrantId!=''">
+                and salary_grant_id = #{salaryGrantId}
+            </if>
+            <choose>
+                <when test="beginTime!=null">
+                    and check_time <![CDATA[ >= ]]> #{beginTime}
+                </when>
+                <when test="endTime!=null">
+                    and check_time<![CDATA[ <= ]]> #{endTime}
+                </when>
+                <when test="beginTime!=null and endTime!=null">
+                    and check_time between #{beginTime} and #{endTime}
+                </when>
+            </choose>
+        </where>
+        order by sgr_id desc limit #{beginIndex},#{rows} ;
+    </select>
+
+    <select id="countRowsByCondition" resultType="Integer">
+        select count(*) from salary_grant
+        <where>
+            check_status=1
+            <if test="salaryGrantId!=null and salaryGrantId!=''">
+                and salary_grant_id = #{salaryGrantId}
+            </if>
+            <choose>
+                <when test="beginTime!=null">
+                    and check_time <![CDATA[ >= ]]> #{beginTime}
+                </when>
+                <when test="endTime!=null">
+                    and check_time <![CDATA[ <= ]]> #{endTime}
+                </when>
+                <when test="beginTime!=null and endTime!=null">
+                    and check_time between #{beginTime} and #{endTime}
+                </when>
+            </choose>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.ConfigFileThirdKindDao">
+
+    <resultMap id="ConfigFileThirdKindMap" type="ConfigFileThirdKind">
+        <id column="ftk_id" property="ftkId"/>
+        <result column="first_kind_id" property="firstKindId"/>
+        <result column="first_kind_name" property="firstKindName"/>
+        <result column="second_kind_id" property="secondKindId"/>
+        <result column="second_kind_name" property="secondKindName"/>
+        <result column="third_kind_id" property="thirdKindId"/>
+        <result column="third_kind_name" property="thirdKindName"/>
+        <result column="third_kind_sale_id" property="thirdKindSaleId"/>
+        <result column="third_kind_is_retail" property="thirdKindIsRetail"/>
+    </resultMap>
+
+    <select id="queryByFirstIdAndSecond" resultMap="ConfigFileThirdKindMap">
+        select ftk_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+        third_kind_sale_id,third_kind_is_retail
+        from config_file_third_kind where first_kind_id=#{firstKindId} and second_kind_id=#{secondKindId};
+    </select>
+
+    <select id="queryByThirdId" resultMap="ConfigFileThirdKindMap">
+        select ftk_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+        third_kind_sale_id,third_kind_is_retail
+        from config_file_third_kind
+        where first_kind_id=#{firstKindId} and second_kind_id=#{secondKindId} and third_kind_id=#{thirdKindId};
+    </select>
+
+</mapper>

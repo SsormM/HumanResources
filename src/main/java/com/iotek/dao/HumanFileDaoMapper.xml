@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.HumanFileDao">
+
+    <resultMap id="HumanFileMap" type="HumanFile">
+        <id column="huf_id" property="hufId"/>
+        <result column="human_id" property="humanId"/>
+        <result column="first_kind_id" property="firstKindId"/>
+        <result column="first_kind_name" property="firstKindName"/>
+        <result column="second_kind_id" property="secondKindId"/>
+        <result column="second_kind_name" property="secondKindName"/>
+        <result column="third_kind_id" property="thirdKindId"/>
+        <result column="third_kind_name" property="thirdKindName"/>
+        <result column="human_name" property="humanName"/>
+        <result column="human_address" property="humanAddress"/>
+        <result column="human_postcode" property="humanPostcode"/>
+        <result column="human_pro_designation" property="humanProDesignation"/>
+        <result column="human_major_kind_id" property="humanMajorKindId"/>
+        <result column="human_major_kind_name" property="humanMajorKindName"/>
+        <result column="human_major_id" property="humanMajorId"/>
+        <result column="hunma_major_name" property="hunmaMajorName"/>
+        <result column="human_telephone" property="humanTelephone"/>
+        <result column="human_mobilephone" property="humanMobilephone"/>
+        <result column="human_bank" property="humanBank"/>
+        <result column="human_account" property="humanAccount"/>
+        <result column="human_qq" property="humanQq"/>
+        <result column="human_email" property="humanEmail"/>
+        <result column="human_hobby" property="humanHobby"/>
+        <result column="human_speciality" property="humanSpeciality"/>
+        <result column="human_sex" property="humanSex"/>
+        <result column="human_religion" property="humanReligion"/>
+        <result column="human_party" property="humanParty"/>
+        <result column="human_nationality" property="humanNationality"/>
+        <result column="human_race" property="humanRace"/>
+        <result column="human_birthday" property="humanBirthday"/>
+        <result column="human_birthplace" property="humanBirthplace"/>
+        <result column="human_age" property="humanAge"/>
+        <result column="human_educated_degree" property="humanEducatedDegree"/>
+        <result column="human_educated_years" property="humanEducatedYears"/>
+        <result column="human_educated_major" property="humanEducatedMajor"/>
+        <result column="human_society_security_id" property="humanSocietySecurityId"/>
+        <result column="human_id_card" property="humanIdCard"/>
+        <result column="remark" property="remark"/>
+        <result column="salary_standard_id" property="salaryStandardId"/>
+        <result column="salary_standard_name" property="salaryStandardName"/>
+        <result column="salary_sum" property="salarySum"/>
+        <result column="demand_salaray_sum" property="demandSalaraySum"/>
+        <result column="paid_salary_sum" property="paidSalarySum"/>
+        <result column="major_change_amount" property="majorChangeAmount"/>
+        <result column="bonus_amount" property="bonusAmount"/>
+        <result column="training_amount" property="trainingAmount"/>
+        <result column="file_chang_amount" property="fileChangAmount"/>
+        <result column="human_histroy_records" property="humanHistroyRecords"/>
+        <result column="human_family_membership" property="humanFamilyMembership"/>
+        <result column="human_picture" property="humanPicture"/>
+        <result column="attachment_name" property="attachmentName"/>
+        <result column="check_status" property="checkStatus"/>
+        <result column="register" property="register"/>
+        <result column="checker" property="checker"/>
+        <result column="changer" property="changer"/>
+        <result column="regist_time" property="registTime"/>
+        <result column="check_time" property="checkTime"/>
+        <result column="change_time" property="changeTime"/>
+        <result column="lastly_change_time" property="lastlyChangeTime"/>
+        <result column="delete_time" property="deleteTime"/>
+        <result column="recovery_time" property="recoveryTime"/>
+        <result column="human_file_status" property="humanFileStatus"/>
+        <association property="salaryGrantDetail" javaType="SalaryGrantDetail">
+            <id column="grd_id" property="grdId"/>
+            <result column="salary_grant_id" property="salaryGrantId"/>
+            <result column="human_id" property="humanId"/>
+            <result column="human_name" property="humanName"/>
+            <result column="bouns_sum" property="bounsSum"/>
+            <result column="sale_sum" property="saleSum"/>
+            <result column="deduct_sum" property="deductSum"/>
+            <result column="salary_standard_sum" property="salaryStandardSum"/>
+            <result column="salary_paid_sum" property="salaryPaidSum"/>
+        </association>
+        <collection property="salaryStandardDetails" ofType="SalaryStandardDetail">
+            <id column="sdt_id" property="sdtId"/>
+            <result column="standard_id" property="standardId"/>
+            <result column="standard_name" property="standardName"/>
+            <result column="item_id" property="itemId"/>
+            <result column="item_name" property="itemName"/>
+            <result column="salary" property="salary"/>
+        </collection>
+    </resultMap>
+
+    <insert id="addHumanFile" parameterType="HumanFile">
+        insert into human_file (human_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+        human_name,human_address,human_postcode,human_pro_designation,human_major_kind_id,human_major_kind_name,human_major_id,hunma_major_name,
+        human_telephone,human_mobilephone,human_bank,human_account,human_qq,human_email,human_hobby,human_speciality,human_sex,human_religion,
+        human_party,human_nationality,human_race,human_birthday,human_birthplace,human_age,human_educated_degree,human_educated_years,human_educated_major,
+        human_society_security_id,human_id_card,remark,salary_standard_id,salary_standard_name,salary_sum,demand_salaray_sum,paid_salary_sum,major_change_amount,
+        bonus_amount,training_amount,file_chang_amount,human_histroy_records,human_family_membership,human_picture,attachment_name,check_status,register,checker,
+        changer,regist_time,check_time,change_time,lastly_change_time,delete_time,recovery_time,human_file_status)
+        values (#{humanId},#{firstKindId},#{firstKindName},#{secondKindId},#{secondKindName},#{thirdKindId},#{thirdKindName},
+        #{humanName},#{humanAddress},#{humanPostcode},#{humanProDesignation},#{humanMajorKindId},#{humanMajorKindName},#{humanMajorId},#{hunmaMajorName},
+        #{humanTelephone},#{humanMobilephone},#{humanBank},#{humanAccount},#{humanQq},#{humanEmail},#{humanHobby},#{humanSpeciality},#{humanSex},#{humanReligion},
+        #{humanParty},#{humanNationality},#{humanRace},#{humanBirthday},#{humanBirthplace},#{humanAge},#{humanEducatedDegree},#{humanEducatedYears},#{humanEducatedMajor},
+        #{humanSocietySecurityId},#{humanIdCard},#{remark},#{salaryStandardId},#{salaryStandardName},#{salarySum},#{demandSalaraySum},#{paidSalarySum},#{majorChangeAmount},
+        #{bonusAmount},#{trainingAmount},#{fileChangAmount},#{humanHistroyRecords},#{humanFamilyMembership},#{humanPicture},#{attachmentName},#{checkStatus},#{register},#{checker},
+        #{changer},#{registTime},#{checkTime},#{changeTime},#{lastlyChangeTime},#{deleteTime},#{recoveryTime},#{humanFileStatus})
+    </insert>
+
+    <select id="queryAll" resultMap="HumanFileMap">
+        select huf_id,human_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+        human_name,human_address,human_postcode,human_pro_designation,human_major_kind_id,human_major_kind_name,human_major_id,hunma_major_name,
+        human_telephone,human_mobilephone,human_bank,human_account,human_qq,human_email,human_hobby,human_speciality,human_sex,human_religion,
+        human_party,human_nationality,human_race,human_birthday,human_birthplace,human_age,human_educated_degree,human_educated_years,human_educated_major,
+        human_society_security_id,human_id_card,remark,salary_standard_id,salary_standard_name,salary_sum,demand_salaray_sum,paid_salary_sum,major_change_amount,
+        bonus_amount,training_amount,file_chang_amount,human_histroy_records,human_family_membership,human_picture,attachment_name,check_status,register,checker,
+        changer,regist_time,check_time,change_time,lastly_change_time,delete_time,recovery_time,human_file_status
+        from human_file where check_status=0 order by huf_id desc limit #{beginIndex},#{rows} ;
+    </select>
+
+    <select id="queryByCondition" resultMap="HumanFileMap">
+        select
+        huf_id,human_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+        human_name,human_address,human_postcode,human_pro_designation,human_major_kind_id,human_major_kind_name,human_major_id,hunma_major_name,
+        human_telephone,human_mobilephone,human_bank,human_account,human_qq,human_email,human_hobby,human_speciality,human_sex,human_religion,
+        human_party,human_nationality,human_race,human_birthday,human_birthplace,human_age,human_educated_degree,human_educated_years,human_educated_major,
+        human_society_security_id,human_id_card,remark,salary_standard_id,salary_standard_name,salary_sum,demand_salaray_sum,paid_salary_sum,major_change_amount,
+        bonus_amount,training_amount,file_chang_amount,human_histroy_records,human_family_membership,human_picture,attachment_name,check_status,register,checker,
+        changer,regist_time,check_time,change_time,lastly_change_time,delete_time,recovery_time,human_file_status
+        from human_file
+        <where>
+            human_file_status= #{humanFile.humanFileStatus}
+            <if test="humanFile.firstKindId!=0">
+                and first_kind_id = #{humanFile.firstKindId}
+            </if>
+            <if test="humanFile.secondKindId!=0">
+                and second_kind_id = #{humanFile.secondKindId}
+            </if>
+            <if test="humanFile.thirdKindId!=0">
+                and third_kind_id = #{humanFile.thirdKindId}
+            </if>
+            <if test="humanFile.humanMajorKindId!=0">
+                and human_major_kind_id = #{humanFile.humanMajorKindId}
+            </if>
+            <if test="humanFile.humanMajorId!=0">
+                and human_major_id = #{humanFile.humanMajorId}
+            </if>
+            <choose>
+                <when test="beginTime!=null">
+                    and regist_time <![CDATA[ > ]]> #{beginTime}
+                </when>
+                <when test="endTime!=null">
+                    and regist_time <![CDATA[ < ]]> #{endTime}
+                </when>
+                <when test="beginTime!=null and endTime!=null">
+                    and regist_time between #{beginTime} and #{endTime}
+                </when>
+            </choose>
+        </where>
+        order by huf_id desc limit #{beginIndex},#{rows} ;
+    </select>
+
+    <select resultType="int" id="countRowsByCondition">
+        select count(*) from human_file
+        <where>
+            human_file_status= #{humanFile.humanFileStatus}
+            <if test="humanFile.firstKindId!=0">
+                and first_kind_id = #{humanFile.firstKindId}
+            </if>
+            <if test="humanFile.secondKindId!=0">
+                and second_kind_id = #{humanFile.secondKindId}
+            </if>
+            <if test="humanFile.thirdKindId!=0">
+                and third_kind_id = #{humanFile.thirdKindId}
+            </if>
+            <if test="humanFile.humanMajorKindId!=0">
+                and human_major_kind_id = #{humanFile.humanMajorKindId}
+            </if>
+            <if test="humanFile.humanMajorId!=0">
+                and human_major_id = #{humanFile.humanMajorId}
+            </if>
+            <choose>
+                <when test="beginTime!=null">
+                    and regist_time <![CDATA[ > ]]> #{beginTime}
+                </when>
+                <when test="endTime!=null">
+                    and regist_time <![CDATA[ < ]]> #{endTime}
+                </when>
+                <when test="beginTime!=null and endTime!=null">
+                    and regist_time between #{beginTime} and #{endTime}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <select resultType="int" id="countRows">select count(*) from human_file where check_status=0; </select>
+
+    <select id="queryByHufId" resultMap="HumanFileMap" parameterType="Integer">
+        select huf_id,human_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+        human_name,human_address,human_postcode,human_pro_designation,human_major_kind_id,human_major_kind_name,human_major_id,hunma_major_name,
+        human_telephone,human_mobilephone,human_bank,human_account,human_qq,human_email,human_hobby,human_speciality,human_sex,human_religion,
+        human_party,human_nationality,human_race,human_birthday,human_birthplace,human_age,human_educated_degree,human_educated_years,human_educated_major,
+        human_society_security_id,human_id_card,remark,salary_standard_id,salary_standard_name,salary_sum,demand_salaray_sum,paid_salary_sum,major_change_amount,
+        bonus_amount,training_amount,file_chang_amount,human_histroy_records,human_family_membership,human_picture,attachment_name,check_status,register,checker,
+        changer,regist_time,check_time,change_time,lastly_change_time,delete_time,recovery_time,human_file_status
+        from human_file where  huf_id = #{hufId};
+    </select>
+
+    <update id="updateUncomplete">
+        update human_file set check_status = 1  , human_file_status=#{humanFileStatus} WHERE huf_id=#{hufId};
+    </update>
+
+    <!--<update id="updateByHufId" parameterType="HumanFile">
+        update human_file set first_kind_id=#{firstKindId},first_kind_name=#{firstKindName},second_kind_id=#{secondKindId},
+        second_kind_name=#{secondKindName},third_kind_id=#{thirdKindId},third_kind_name=#{thirdKindName},human_name=#{humanName},
+        human_address=#{humanAddress},human_postcode=#{humanPostcode},human_pro_designation=#{humanProDesignation},
+        human_major_kind_id=#{humanMajorKindId},human_major_kind_name=#{humanMajorKindName},human_major_id=#{humanMajorId},
+        hunma_major_name=#{hunmaMajorName},human_telephone=#{humanTelephone},human_mobilephone=#{humanMobilephone},
+        human_bank=#{humanBank},human_account=#{humanAccount},human_qq=#{humanQq},human_email=#{humanEmail},
+        human_hobby=#{humanHobby},human_speciality=#{humanSpeciality},human_sex=#{humanSex},human_religion=#{humanReligion},
+        human_party=#{humanParty},human_nationality=#{humanNationality},human_race=#{humanRace},human_birthday=#{humanBirthday},
+        human_birthplace=#{humanBirthplace},human_age=#{humanAge},human_educated_degree=#{humanEducatedDegree},
+        human_educated_years=#{humanEducatedYears},human_educated_major=#{humanEducatedMajor},
+        human_society_security_id=#{humanSocietySecurityId},human_id_card=#{humanIdCard},remark=#{remark},salary_standard_id=#{salaryStandardId},
+        salary_standard_name=#{salaryStandardName},salary_sum=#{salarySum},demand_salaray_sum=#{demandSalaraySum},paid_salary_sum=#{paidSalarySum},
+        major_change_amount=#{majorChangeAmount},bonus_amount=#{bonusAmount},training_amount=#{trainingAmount},file_chang_amount=#{fileChangAmount}+1,
+        human_histroy_records=#{humanHistroyRecords},human_family_membership=#{humanFamilyMembership},human_picture=#{humanPicture},
+        attachment_name=#{attachmentName},check_status=#{checkStatus},register=#{register},checker=#{checker},
+        changer=#{changer},regist_time=#{registTime},check_time=#{checkTime},change_time=#{changeTime},lastly_change_time=#{lastlyChangeTime},
+        delete_time=#{deleteTime},recovery_time=#{recoveryTime},human_file_status=#{humanFileStatus}
+        WHERE huf_id=#{hufId};
+    </update>-->
+
+    <update id="updateByHufId" parameterType="HumanFile">
+        update human_file
+        <set>
+            <if test="firstKindId != null">
+                first_kind_id = #{firstKindId},
+            </if>
+            <if test="firstKindName != null">
+                first_kind_name = #{firstKindName},
+            </if>
+            <if test="secondKindId != null">
+                second_kind_id = #{secondKindId},
+            </if>
+            <if test="secondKindName != null">
+                second_kind_name = #{secondKindName},
+            </if>
+            <if test="thirdKindId != null">
+                third_kind_id = #{thirdKindId},
+            </if>
+            <if test="thirdKindName != null">
+                third_kind_name = #{thirdKindName},
+            </if>
+            <if test="humanName != null">
+                human_name = #{humanName},
+            </if>
+            <if test="humanAddress != null">
+                human_address = #{humanAddress},
+            </if>
+            <if test="humanPostcode != null">
+                human_postcode = #{humanPostcode},
+            </if>
+            <if test="humanProDesignation != null">
+                human_pro_designation = #{humanProDesignation},
+            </if>
+            <if test="humanMajorKindId != null">
+                human_major_kind_id = #{humanMajorKindId},
+            </if>
+            <if test="humanMajorKindName != null">
+                human_major_kind_name = #{humanMajorKindName},
+            </if>
+            <if test="humanMajorId != null">
+                human_major_id = #{humanMajorId},
+            </if>
+            <if test="hunmaMajorName != null">
+                hunma_major_name = #{hunmaMajorName},
+            </if>
+            <if test="humanTelephone != null">
+                human_telephone = #{humanTelephone},
+            </if>
+            <if test="humanMobilephone != null">
+                human_mobilephone = #{humanMobilephone},
+            </if>
+            <if test="humanBank != null">
+                human_bank = #{humanBank},
+            </if>
+            <if test="humanAccount != null">
+                human_account = #{humanAccount},
+            </if>
+            <if test="humanQq != null">
+                human_qq = #{humanQq},
+            </if>
+            <if test="humanEmail != null">
+                human_email = #{humanEmail},
+            </if>
+            <if test="humanHobby != null">
+                human_hobby = #{humanHobby},
+            </if>
+            <if test="humanSpeciality != null">
+                human_speciality = #{humanSpeciality},
+            </if>
+            <if test="humanSex != null">
+                human_sex = #{humanSex},
+            </if>
+            <if test="humanReligion != null">
+                human_religion = #{humanReligion},
+            </if>
+            <if test="humanParty != null">
+                human_party = #{humanParty},
+            </if>
+            <if test="humanNationality != null">
+                human_nationality = #{humanNationality},
+            </if>
+            <if test="humanRace != null">
+                human_race = #{humanRace},
+            </if>
+            <if test="humanBirthday != null">
+                human_birthday = #{humanBirthday},
+            </if>
+            <if test="humanBirthplace != null">
+                human_birthplace = #{humanBirthplace},
+            </if>
+            <if test="humanAge != null">
+                human_age = #{humanAge},
+            </if>
+            <if test="humanEducatedDegree != null">
+                human_educated_degree = #{humanEducatedDegree},
+            </if>
+            <if test="humanEducatedYears != null">
+                human_educated_years = #{humanEducatedYears},
+            </if>
+            <if test="humanEducatedMajor != null">
+                human_educated_major = #{humanEducatedMajor},
+            </if>
+            <if test="humanSocietySecurityId != null">
+                human_society_security_id = #{humanSocietySecurityId},
+            </if>
+            <if test="humanIdCard != null">
+                human_id_card = #{humanIdCard},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="salaryStandardId != null">
+                salary_standard_id = #{salaryStandardId},
+            </if>
+            <if test="salaryStandardName != null">
+                salary_standard_name = #{salaryStandardName},
+            </if>
+            <if test="salarySum != null">
+                salary_sum = #{salarySum},
+            </if>
+            <if test="demandSalaraySum != null">
+                demand_salaray_sum = #{demandSalaraySum},
+            </if>
+            <if test="paidSalarySum != null">
+                paid_salary_sum = #{paidSalarySum},
+            </if>
+            <if test="majorChangeAmount != null">
+                major_change_amount = #{majorChangeAmount},
+            </if>
+            <if test="bonusAmount != null">
+                bonus_amount = #{bonusAmount},
+            </if>
+            <if test="trainingAmount != null">
+                training_amount = #{trainingAmount},
+            </if>
+            <if test="humanHistroyRecords != null">
+                human_histroy_records = #{humanHistroyRecords},
+            </if>
+            <if test="humanFamilyMembership != null">
+                human_family_membership = #{humanFamilyMembership},
+            </if>
+            <if test="fileChangAmount != null">
+                file_chang_amount = #{fileChangAmount},
+            </if>
+            <if test="humanPicture != null">
+                human_picture = #{humanPicture},
+            </if>
+            <if test="attachmentName != null">
+                attachment_name = #{attachmentName},
+            </if>
+            <if test="checkStatus != null">
+                check_status = #{checkStatus},
+            </if>
+            <if test="register != null">
+                register = #{register},
+            </if>
+            <if test="checker != null">
+                checker = #{checker},
+            </if>
+            <if test="changer != null">
+                changer = #{changer},
+            </if>
+            <if test="registTime != null">
+                regist_time = #{registTime},
+            </if>
+            <if test="checkTime != null">
+                check_time = #{checkTime},
+            </if>
+            <if test="changeTime != null">
+                change_time = #{changeTime},
+            </if>
+            <if test="lastlyChangeTime != null">
+                lastly_change_time = #{lastlyChangeTime},
+            </if>
+            <if test="deleteTime != null">
+                delete_time = #{deleteTime},
+            </if>
+            <if test="recoveryTime != null">
+                recovery_time = #{recoveryTime},
+            </if>
+            <if test="humanFileStatus != null">
+                human_file_status = #{humanFileStatus},
+            </if>
+        </set>
+        WHERE huf_id=#{hufId};
+    </update>
+
+    <select id="queryHumanId" resultMap="HumanFileMap">
+       select huf_id,human_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+        human_name,human_address,human_postcode,human_pro_designation,human_major_kind_id,human_major_kind_name,human_major_id,hunma_major_name,
+        human_telephone,human_mobilephone,human_bank,human_account,human_qq,human_email,human_hobby,human_speciality,human_sex,human_religion,
+        human_party,human_nationality,human_race,human_birthday,human_birthplace,human_age,human_educated_degree,human_educated_years,human_educated_major,
+        human_society_security_id,human_id_card,remark,salary_standard_id,salary_standard_name,salary_sum,demand_salaray_sum,paid_salary_sum,major_change_amount,
+        bonus_amount,training_amount,file_chang_amount,human_histroy_records,human_family_membership,human_picture,attachment_name,check_status,register,checker,
+        changer,regist_time,check_time,change_time,lastly_change_time,delete_time,recovery_time,human_file_status
+        from human_file WHERE huf_id=(SELECT MAX(huf_id) FROM human_file);
+    </select>
+
+    <select id="query" resultMap="HumanFileMap">
+        select count(huf_id) as huf_id,human_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+        human_name,human_address,human_postcode,human_pro_designation,human_major_kind_id,human_major_kind_name,human_major_id,hunma_major_name,
+        human_telephone,human_mobilephone,human_bank,human_account,human_qq,human_email,human_hobby,human_speciality,human_sex,human_religion,
+        human_party,human_nationality,human_race,human_birthday,human_birthplace,human_age,human_educated_degree,human_educated_years,human_educated_major,
+        human_society_security_id,human_id_card,remark,salary_standard_id,salary_standard_name,sum(salary_sum) AS salary_sum,demand_salaray_sum,paid_salary_sum,major_change_amount,
+        bonus_amount,training_amount,file_chang_amount,human_histroy_records,human_family_membership,human_picture,attachment_name,check_status,register,checker,
+        changer,regist_time,check_time,change_time,lastly_change_time,delete_time,recovery_time,human_file_status
+        from human_file where human_file_status=3 GROUP BY second_kind_id;
+    </select>
+
+    <select id="querybyFisrtIdAndSecId" resultMap="HumanFileMap">
+         select t1.* ,t2.* ,t3.* from human_file t1
+         LEFT JOIN salary_standard_details t2 ON t1.salary_standard_id = t2.standard_id
+         LEFT JOIN salary_grant_details t3 ON t1.human_id = t3.human_id
+         where t1.human_file_status=3  and t1.first_kind_name = #{firstKindName} and   t1.second_kind_name = #{secondKindName};
+    </select>
+
+    <update id="updateSalarySum" parameterType="HumanFile">
+        update human_file set  salary_sum=#{salarySum} where salary_standard_id=#{salaryStandardId};
+    </update>
+
+    <select id="querybySalaryGrantId" resultMap="HumanFileMap" parameterType="String">
+         select t1.* ,t2.* ,t3.* from human_file t1
+         LEFT JOIN salary_standard_details t2 ON t1.salary_standard_id = t2.standard_id
+         LEFT JOIN salary_grant_details t3 ON t1.human_id = t3.human_id
+         where t1.human_file_status=3  and t3.salary_grant_id = #{salaryGrantId};
+    </select>
+
+    <select id="queryByHumanId" resultMap="HumanFileMap" parameterType="String">
+         select huf_id,human_id,first_kind_id,first_kind_name,second_kind_id,second_kind_name,third_kind_id,third_kind_name,
+        human_name,human_address,human_postcode,human_pro_designation,human_major_kind_id,human_major_kind_name,human_major_id,hunma_major_name,
+        human_telephone,human_mobilephone,human_bank,human_account,human_qq,human_email,human_hobby,human_speciality,human_sex,human_religion,
+        human_party,human_nationality,human_race,human_birthday,human_birthplace,human_age,human_educated_degree,human_educated_years,human_educated_major,
+        human_society_security_id,human_id_card,remark,salary_standard_id,salary_standard_name,salary_sum,demand_salaray_sum,paid_salary_sum,major_change_amount,
+        bonus_amount,training_amount,file_chang_amount,human_histroy_records,human_family_membership,human_picture,attachment_name,check_status,register,checker,
+        changer,regist_time,check_time,change_time,lastly_change_time,delete_time,recovery_time,human_file_status
+        from human_file WHERE human_id = #{humanId}
+    </select>
+</mapper>

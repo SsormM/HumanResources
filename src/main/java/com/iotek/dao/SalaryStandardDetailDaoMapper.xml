@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.SalaryStandardDetailDao">
+
+    <resultMap id="SalaryStandardDetailMap" type="SalaryStandardDetail">
+        <id column="sdt_id" property="sdtId"/>
+        <result column="standard_id" property="standardId"/>
+        <result column="standard_name" property="standardName"/>
+        <result column="item_id" property="itemId"/>
+        <result column="item_name" property="itemName"/>
+        <result column="salary" property="salary"/>
+    </resultMap>
+
+    <insert id="addSalaryStandardDetail" parameterType="salaryStandardDetail">
+        insert into salary_standard_details (standard_id,standard_name,item_id,item_name,salary)
+        values (#{standardId},#{standardName},#{itemId},#{itemName},#{salary})
+    </insert>
+
+    <select id="querySalaryStandardDetailById" parameterType="String" resultMap="SalaryStandardDetailMap">
+        select sdt_id,standard_id,standard_name,item_id,item_name,salary from salary_standard_details
+        where standard_id=#{standardId}
+    </select>
+
+    <update id="update" parameterType="salaryStandardDetail">
+        update  salary_standard_details
+        <set>
+            <if test="standardName != null">standard_name = #{standardName}, </if>
+
+            <if test="itemId != null">item_id = #{itemId}, </if>
+
+            <if test="itemName != null">item_name = #{itemName}, </if>
+
+            <if test="salary != null">salary = #{salary}, </if>
+        </set>
+        where sdt_id = #{sdtId}
+    </update>
+
+
+
+
+
+</mapper>
