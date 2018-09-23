@@ -10,13 +10,35 @@
         <result column="u_name" property="uName"/>
         <result column="u_true_name" property="uTrueName"/>
         <result column="u_password" property="uPassword"/>
+        <association property="role" javaType="Role">
+            <id column="role_id" property="roleId"/>
+            <result column="role_name" property="roleName"/>
+            <result column="role_desc" property="roleDesc"/>
+            <result column="role_state" property="roleState"/>
+        </association>
     </resultMap>
 
     <select id="queryUserByNameAndPassword" parameterType="User" resultMap="UserMap">
-        select u_id,u_name,u_true_name,u_password from users where u_name=#{uName} and u_password=#{uPassword};
+        select u.u_id,u.u_name,u.u_true_name,u.u_password,r.role_id,r.role_name,r.role_desc,r.role_state
+        from users u , role_info r where u.u_name=#{uName} and u.u_password=#{uPassword} and u.role_id = r.role_id;
     </select>
 
+    <delete id="deleteUserByRoleId" parameterType="Integer">
+        delete from users where role_id = #{roleId}
+    </delete>
 
+    <select id="queryAllUser" resultMap="UserMap">
+        select u_id,u_name,u_true_name,u_password from users;
+    </select>
+
+    <select id="queryUserById" resultMap="UserMap" parameterType="integer">
+        select u_id,u_name,u_true_name,u_password from users where u_id=#{userId};
+    </select>
+
+    <update id="updateUserRole" >
+        update user set role_id = #{roleId} where u_id=#{userId}
+
+    </update>
 
 
 </mapper>

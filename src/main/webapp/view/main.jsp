@@ -142,31 +142,28 @@
                     <i class="icon-dashboard"></i> <span class="menu-text">
 								控制台 </span>
                 </a></li>
-                <%--
 
-                                <c:forEach items="${sessionScope.StaffAnthortyList}" var="parent">
-                                <c:if test="${parent.anthortyPid==1}">
-                                <li><a href="javascript:void(0)" target="mainframe"
-                                       class="dropdown-toggle"> <i class="icon-desktop"></i> <span
-                                        class="menu-text"> ${parent.anthortyName} </span> <b class="arrow icon-angle-down"></b>
-                                </a>
-
-                                    <ul class="submenu">
-                                        <c:forEach items="${sessionScope.StaffAnthortyList}" var="child">
-                                            <c:if test="${child.anthortyPid==parent.anthortyId}">
-                                                <li><a href="${child.anthortyUrl}" target="mainframe"> <i
-                                                        class="icon-double-angle-right"></i> ${child.anthortyName}
-                                                </a></li>
-                                            </c:if>
-                                        </c:forEach>
-
-                                    </ul>
-                                </li>
-                                </c:if>
-                                </c:forEach>
-                --%>
-
+                <c:forEach items="${sessionScope.StaffAnthortyList}" var="parent">
+                <c:if test="${parent.anthortyPid==1}">
                 <li><a href="javascript:void(0)" target="mainframe"
+                       class="dropdown-toggle"> <i class="icon-desktop"></i> <span
+                        class="menu-text"> ${parent.anthortyName} </span> <b class="arrow icon-angle-down"></b>
+                </a>
+
+                    <ul class="submenu">
+                        <c:forEach items="${sessionScope.StaffAnthortyList}" var="child">
+                            <c:if test="${child.anthortyPid==parent.anthortyId}">
+                                <li><a href="${child.anthortyUrl}" target="mainframe"> <i
+                                        class="icon-double-angle-right"></i> ${child.anthortyName}
+                                </a></li>
+                            </c:if>
+                        </c:forEach>
+                    </ul>
+                </li>
+                </c:if>
+                </c:forEach>
+
+                <%--<li><a href="javascript:void(0)" target="mainframe"
                        class="dropdown-toggle"> <i class="icon-desktop"></i> <span
                         class="menu-text"> 系统管理 </span> <b class="arrow icon-angle-down"></b>
                 </a>
@@ -279,7 +276,7 @@
                         </a></li>
 
                     </ul>
-                </li>
+                </li>--%>
 
 
             <!-- /.nav-list -->

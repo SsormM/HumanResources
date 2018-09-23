@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.AnthortyDao">
+
+
+    <resultMap id="AnthortyMap" type="Anthorty">
+        <id column="anthorty_id" property="anthortyId"/>
+        <result column="anthorty_pid" property="anthortyPid"/>
+        <result column="anthorty_pname" property="anthortyPName"/>
+        <result column="anthorty_name" property="anthortyName"/>
+        <result column="anthorty_desc" property="anthortyDesc"/>
+        <result column="anthorty_url" property="anthortyUrl"/>
+    </resultMap>
+
+    <insert id="addAnthorty" parameterType="Anthorty">
+
+        insert into anthorty_info (anthorty_pid,anthorty_name,anthorty_desc,anthorty_url) values (#{anthortyPid},#{anthortyName},#{anthortyDesc},#{anthortyUrl});
+    </insert>
+
+    <select id="queryAllAnthorty" resultMap="AnthortyMap">
+        select anthorty_id,anthorty_pid,anthorty_name,anthorty_desc,anthorty_url from anthorty_info;
+
+    </select>
+
+    <select id="queryAnthortyId" resultMap="AnthortyMap" parameterType="Integer">
+        select a.anthorty_id,a.anthorty_pid,p.anthorty_name as anthorty_pname,a.anthorty_name,a.anthorty_desc,a.anthorty_url
+        from anthorty_info a , anthorty_info p where a.anthorty_pid=p.anthorty_id and a.anthorty_id=#{anthortyId};
+    </select>
+
+    <select id="queryAllParent" resultMap="AnthortyMap">
+        select anthorty_id,anthorty_pid,anthorty_name,anthorty_desc,anthorty_url from anthorty_info where anthorty_pid &lt;2
+
+    </select>
+
+    <update id="update" parameterType="Anthorty">
+        update  anthorty_info set anthorty_pid=#{anthortyId},anthorty_pid=#{anthortyPid},anthorty_name=#{anthortyName},
+        anthorty_desc=#{anthortyDesc},anthorty_url=#{anthortyUrl}
+        where anthorty_id=#{anthortyId}
+
+    </update>
+
+    <delete id="deleteAnthorty" parameterType="Anthorty">
+        delete from  anthorty_info where anthorty_id =#{anthortyId}
+    </delete>
+
+    <select id="queryAnthortyByRoleId" parameterType="Integer" resultMap="AnthortyMap">
+        select a.anthorty_id,a.anthorty_pid,a.anthorty_name,a.anthorty_desc,a.anthorty_url from anthorty_info a,role_info r,role_anthority_info r_a
+        where  r_a.anthorty_id=a.anthorty_id and r_a.role_id=r.role_id and r.role_id=#{roleId}
+    </select>
+
+</mapper>

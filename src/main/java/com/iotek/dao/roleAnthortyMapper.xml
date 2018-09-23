@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.RoleAnthortyDao">
+
+    <delete id="deleteAnthortyByRoleId" parameterType="Integer">
+        delete from role_anthority_info where role_id=#{roleId}
+    </delete>
+
+    <insert id="addeAnthortyAndRole">
+        insert into role_anthority_info (role_id,anthorty_id) values (#{roleId},#{anthortyId})
+    </insert>
+
+
+</mapper>

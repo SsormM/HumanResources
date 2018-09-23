@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace : 是接口的名字 -->
+
+<mapper namespace="com.iotek.dao.RoleDao">
+
+    <resultMap id="RoleMap" type="Role">
+        <id column="role_id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+        <result column="role_desc" property="roleDesc"/>
+        <result column="role_state" property="roleState"/>
+        <collection property="anthortySet" ofType="Anthorty">
+            <id column="anthorty_id" property="anthortyId"/>
+            <result column="anthorty_pid" property="anthortyPid"/>
+            <result column="anthorty_name" property="anthortyName"/>
+            <result column="anthorty_desc" property="anthortyDesc"/>
+            <result column="anthorty_url" property="anthortyUrl"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryAllRole"  resultMap="RoleMap">
+        select role_id,role_name,role_desc,role_state from role_info
+    </select>
+
+    <select id="queryRoleByRoleId" parameterType="Integer" resultMap="RoleMap">
+        select r.role_id,r.role_name,r.role_desc,r.role_state from role_info r where  r.role_id = #{roleId}
+    </select>
+
+    <delete id="deleteRoleByRoleId" parameterType="Integer" >
+        delete from role_info  where role_id = #{roleId}
+    </delete>
+
+    <insert id="addRole" parameterType="Role" >
+       insert into role_info (role_name,role_desc) values (#{roleName},#{roleDesc})
+    </insert>
+
+    <delete id="updateRole" parameterType="Role" >
+        update role_info set role_name=#{roleName},role_desc=#{roleDesc} where role_Id = #{roleId}
+    </delete>
+
+    <select id="queryRole" parameterType="Role" resultMap="RoleMap">
+        select r.role_id,r.role_name,r.role_desc,r.role_state from role_info r
+        where  r.role_Name like concat('%',#{roleName},'%')
+    </select>
+</mapper>

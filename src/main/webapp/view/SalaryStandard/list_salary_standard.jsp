@@ -35,7 +35,7 @@
                     alert(result.rows[i].registTime+"```"+ new Date(result.rows[i].registTime))
                     var trs = "";
                     trs = "<tr>" +
-                        "<td><a href='staffinfo_show.html'>" + result.rows[i].standardId + "</a></td>" +
+                        "<td><a href=''>" + result.rows[i].standardId + "</a></td>" +
                         "<td>" + result.rows[i].standardName + "</td>" +
                         "<td>" + result.rows[i].salarySum + "</td>" +
                         "<td>" + result.rows[i].designer + "</td>" +
@@ -81,7 +81,7 @@
                             for (var i = 0; i < result.rows.length; i++) {
                                 var trs = "";
                                 trs = "<tr>" +
-                                    "<td><a href='staffinfo_show.html'>" + result.rows[i].standardId + "</a></td>" +
+                                    "<td><a href=''>" + result.rows[i].standardId + "</a></td>" +
                                     "<td>" + result.rows[i].standardName + "</td>" +
                                     "<td>" + result.rows[i].salarySum + "</td>" +
                                     "<td>" + result.rows[i].designer + "</td>" +
@@ -130,7 +130,7 @@
         </div>
         <input type="button" class="btn btn-danger" value="查询"/>
         <input type="button" class="btn btn-success" value="添加"
-               onClick="javascript:window.location='staffinfo_add.html'"/>
+               onClick="javascript:window.location=''"/>
     </form>
 </div>
 <div id="table" class="row" style="padding:15px; padding-top:0px; ">

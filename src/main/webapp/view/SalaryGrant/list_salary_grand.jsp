@@ -70,7 +70,7 @@
         </div>
         <input type="button" class="btn btn-danger" value="查询"/>
         <input type="button" class="btn btn-success" value="添加"
-               onClick="javascript:window.location='staffinfo_add.html'"/>
+               onClick="javascript:window.location=''"/>
     </form>
 </div>
 

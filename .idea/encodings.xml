@@ -3,8 +3,11 @@
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pom.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/controller/AnthortyController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/controller/ConfigFileFirstKindController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/controller/RoleController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/controller/UserController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/AnthortyDao.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/ConfigFileFirstKindDaoMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/ConfigFileSecondKindDaoMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/ConfigFileThirdKindDaoMapper.xml" charset="GBK" />
@@ -14,17 +17,28 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/HumanFileDaoMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/HumanFileDigDaoMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/MajorChangeDaoMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/RoleAnthortyDao.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/RoleDao.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/SalaryGrantDaoMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/SalaryGrantDetailDaoMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/SalaryStandardDaoMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/SalaryStandardDetailDaoMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/anthortyMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/roleAnthortyMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/roleMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/userMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/entity/Anthorty.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/entity/Role.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/entity/Role.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/filter/FilterCharacterEncoding.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/filter/FilterLogin.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/interceptors" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/pojo/DataGridResult.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/service/AnthortyService.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/service/Impl/AnthortyServiceImpl.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/service/Impl/RoleServiceImpl.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/service/RoleService.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/util" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/tesr.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/resources/applicationContext-dao.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/resources/applicationContext-mvc.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/resources/applicationContext-trans.xml" charset="GBK" />
@@ -52,8 +66,10 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/jquery/jquery-3.3.1.min.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/jquery/locales" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/jquery/npm.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/view/HumanResource/list_human_resource.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/view/main.jsp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/view/system" charset="GBK" />
     <file url="PROJECT" charset="GBK" />
   </component>
 </project>

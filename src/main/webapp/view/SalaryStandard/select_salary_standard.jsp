@@ -138,7 +138,7 @@
                 alert(result.rows[i].registTime+"```"+ new Date(result.rows[i].registTime))
                 var trs = "";
                 trs = "<tr>" +
-                    "<td><a href='staffinfo_show.html'>" + result.rows[i].standardId + "</a></td>" +
+                    "<td><a href=''>" + result.rows[i].standardId + "</a></td>" +
                     "<td>" + result.rows[i].standardName + "</td>" +
                     "<td>" + result.rows[i].salarySum + "</td>" +
                     "<td>" + result.rows[i].designer + "</td>" +
@@ -184,7 +184,7 @@
                             alert(result.rows[i].registTime+"```"+ new Date(result.rows[i].registTime))
                             var trs = "";
                             trs = "<tr>" +
-                                "<td><a href='staffinfo_show.html'>" + result.rows[i].standardId + "</a></td>" +
+                                "<td><a href=''>" + result.rows[i].standardId + "</a></td>" +
                                 "<td>" + result.rows[i].standardName + "</td>" +
                                 "<td>" + result.rows[i].salarySum + "</td>" +
                                 "<td>" + result.rows[i].designer + "</td>" +

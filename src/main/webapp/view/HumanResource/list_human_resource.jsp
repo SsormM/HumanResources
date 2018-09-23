@@ -35,7 +35,7 @@
                     if (result.rows[i].humanFileStatus == 1) {
                         var trs = "";
                         trs = "<tr>" +
-                            "<td><a href='staffinfo_show.html'>" + result.rows[i].humanId + "</a></td>" +
+                            "<td><a href=''>" + result.rows[i].humanId + "</a></td>" +
                             "<td>" + result.rows[i].humanName + "</td>" +
                             "<td>" + result.rows[i].humanSex + "</td>" +
                             "<td>" + result.rows[i].firstKindName + "</td>" +
@@ -51,7 +51,7 @@
                     if (result.rows[i].humanFileStatus == 2) {
                         var trs = "";
                         trs = "<tr>" +
-                            "<td><a href='staffinfo_show.html'>" + result.rows[i].humanId + "</a></td>" +
+                            "<td><a href=''>" + result.rows[i].humanId + "</a></td>" +
                             "<td>" + result.rows[i].humanName + "</td>" +
                             "<td>" + result.rows[i].humanSex + "</td>" +
                             "<td>" + result.rows[i].firstKindName + "</td>" +
@@ -100,7 +100,7 @@
                                 if (result.rows[i].humanFileStatus == 1) {
                                     var trs = "";
                                     trs = "<tr>" +
-                                        "<td><a href='staffinfo_show.html'>" + result.rows[i].humanId + "</a></td>" +
+                                        "<td><a href=''>" + result.rows[i].humanId + "</a></td>" +
                                         "<td>" + result.rows[i].humanName + "</td>" +
                                         "<td>" + result.rows[i].humanSex + "</td>" +
                                         "<td>" + result.rows[i].firstKindName + "</td>" +
@@ -116,7 +116,7 @@
                                 if (result.rows[i].humanFileStatus == 2) {
                                     var trs = "";
                                     trs = "<tr>" +
-                                        "<td><a href='staffinfo_show.html'>" + result.rows[i].humanId + "</a></td>" +
+                                        "<td><a href=''>" + result.rows[i].humanId + "</a></td>" +
                                         "<td>" + result.rows[i].humanName + "</td>" +
                                         "<td>" + result.rows[i].humanSex + "</td>" +
                                         "<td>" + result.rows[i].firstKindName + "</td>" +
@@ -166,7 +166,7 @@
         </div>
         <input type="button" class="btn btn-danger" value="查询"/>
         <input type="button" class="btn btn-success" value="添加"
-               onClick="javascript:window.location='staffinfo_add.html'"/>
+               onClick="javascript:window.location=''"/>
     </form>
 </div>
 <div id="table" class="row" style="padding:15px; padding-top:0px; ">

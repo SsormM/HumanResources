@@ -5,6 +5,7 @@ public class User {
     private String uName;
     private String uTrueName;
     private String uPassword;
+    private Role role;
 
     @Override
     public String toString() {
@@ -13,7 +14,16 @@ public class User {
                 ", uName='" + uName + '\'' +
                 ", uTrueName='" + uTrueName + '\'' +
                 ", uPassword='" + uPassword + '\'' +
+                ", role=" + role +
                 '}';
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Integer getuId() {
