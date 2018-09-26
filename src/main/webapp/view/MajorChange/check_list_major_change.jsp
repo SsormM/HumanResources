@@ -100,13 +100,16 @@
                 $('#pageLimit').bootstrapPaginator(options);
 
             })
-
+            if ($("#mess").val()!=0){
+                alert($("#mess").val())
+            }
         })
     </script>
 
 </head>
 
 <body>
+<input type="hidden" id="mess" value="${requestScope.mess}">
 <div style="padding:0px; margin:0px;">
     <ul class="breadcrumb" style="  margin:0px; ">
         <li><a href="#">调动管理</a></li>

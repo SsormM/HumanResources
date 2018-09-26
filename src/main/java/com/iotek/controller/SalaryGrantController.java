@@ -85,6 +85,11 @@ public class SalaryGrantController {
         List<SalaryGrantDetail> salaryGrantDetails = salaryGrantDetailPojo.getSalaryGrantDetails();
 
         Integer integer = salaryGrantService.addSalaryGrant(salaryGrant, salaryGrantDetails);
+        if (integer>0){
+            modelMap.addAttribute("mess","添加成功");
+        }else {
+            modelMap.addAttribute("mess","添加失败");
+        }
 
         System.out.println("----addSalaryGrantDetail----");
         return "forward:/createSalaryGrant";
@@ -145,7 +150,11 @@ public class SalaryGrantController {
         List<SalaryGrantDetail> salaryGrantDetails = salaryGrantDetailPojo.getSalaryGrantDetails();
 
         Integer integer = salaryGrantService.updateSalaryGrant(salaryGrant, salaryGrantDetails);
-
+        if (integer>0){
+            modelMap.addAttribute("mess","删除成功");
+        }else {
+            modelMap.addAttribute("mess","删除失败");
+        }
         System.out.println("----completeSalaryGrant----");
         return "view/SalaryGrant/check_list_salary_grand";
     }

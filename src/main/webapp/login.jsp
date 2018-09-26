@@ -30,7 +30,7 @@
     </script>
 </head>
 <body>
-<input type="hidden" id="mess" value="${mess}">
+<input type="hidden" id="mess" value="${requestScope.mess}">
 <article class="htmleaf-container">
     <header class="htmleaf-header">
         <h1>人力资源管理后台 <span>Human Resources Backstage</span></h1>

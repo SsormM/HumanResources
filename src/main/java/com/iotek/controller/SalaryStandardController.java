@@ -36,8 +36,12 @@ public class SalaryStandardController {
         for (Float aFloat : salary) {
             System.out.println(aFloat);
         }
-        salaryStandardService.addSalaryStandard(salaryStandard, itemName, salary);
-
+        Integer integer = salaryStandardService.addSalaryStandard(salaryStandard, itemName, salary);
+        if (integer>0){
+            modelMap.addAttribute("mess","添加成功");
+        }else {
+            modelMap.addAttribute("mess","添加失败");
+        }
         System.out.println("----addSalaryStandard----");
         return "view/SalaryStandard/add_salary_standard";
     }
@@ -89,13 +93,18 @@ public class SalaryStandardController {
     }
 
     @RequestMapping("/completeSalaryStandard")
-    public String complete(SalaryStandard salaryStandard, String[] itemName, Float[] salary, Integer[] sdtId) {
+    public String complete(SalaryStandard salaryStandard,ModelMap modelMap, String[] itemName, Float[] salary, Integer[] sdtId) {
         System.out.println("----completeSalaryStandard----");
         System.out.println("salaryStandard:" + salaryStandard);
         salaryStandard.setCheckStatus(1);
         salaryStandard.setCheckTime(new Date());
         salaryStandard.setChangeStatus(0);
         Integer result = salaryStandardService.updateSalaryStandard(salaryStandard, itemName, salary, sdtId);
+        if (result>0){
+            modelMap.addAttribute("mess","复核成功");
+        }else {
+            modelMap.addAttribute("mess","复核失败");
+        }
         System.out.println("----completeSalaryStandard----");
         return "view/SalaryStandard/list_salary_standard";
     }
@@ -120,19 +129,25 @@ public class SalaryStandardController {
         System.out.println("endTime：" + endTime);
         System.out.println("page：" + page);
         System.out.println("rows：" + rows);
+
         DataGridResult<SalaryStandard> gridResult = salaryStandardService.searchSalaryStandard(standardId, keyword, beginTime, endTime, page, rows);
         System.out.println("----searchSalaryStandard----");
         return gridResult;
     }
 
     @RequestMapping("/updateSalaryStandard")
-    public String updateSalaryStandard(SalaryStandard salaryStandard, String[] itemName, Float[] salary, Integer[] sdtId) {
+    public String updateSalaryStandard(SalaryStandard salaryStandard,ModelMap modelMap , String[] itemName, Float[] salary, Integer[] sdtId) {
         System.out.println("----updateSalaryStandard----");
         System.out.println("salaryStandard:" + salaryStandard);
         salaryStandard.setCheckStatus(0);
         salaryStandard.setChangeTime(new Date());
         salaryStandard.setChangeStatus(1);
         Integer result = salaryStandardService.updateSalaryStandard(salaryStandard, itemName, salary, sdtId);
+        if (result>0){
+            modelMap.addAttribute("mess","修改成功");
+        }else {
+            modelMap.addAttribute("mess","修改失败");
+        }
         System.out.println("----updateSalaryStandard----");
         return "view/SalaryStandard/select_salary_standard";
     }

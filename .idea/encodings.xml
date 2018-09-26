@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/pom.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/controller/AnthortyController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/controller/ConfigFileFirstKindController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/controller/HumanFileController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/controller/RoleController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/controller/UserController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/AnthortyDao.java" charset="GBK" />
@@ -28,7 +29,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/roleMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/dao/userMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/entity/Anthorty.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/entity/Role.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/entity/Role.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/filter/FilterCharacterEncoding.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/iotek/filter/FilterLogin.java" charset="GBK" />
@@ -55,6 +55,7 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/bootstrap-paginator-master/jquery-1.9.1.min.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/bootstrap-paginator-master/jquery.history.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/bootstrap-paginator-master/qunit-1.11.0.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/bootstrapValidator-dist" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/fonts" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/img" charset="GBK" />

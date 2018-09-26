@@ -19,7 +19,11 @@ public class MajorChangeController {
         System.out.println("----addMajorChange----");
         System.out.println(majorChange);
         Integer integer = majorChangeService.addMajorChange(majorChange);
-
+        if (integer>0){
+            modelMap.addAttribute("mess","添加成功");
+        }else {
+            modelMap.addAttribute("mess","添加失败");
+        }
         System.out.println("----addMajorChange----");
         return "view/MajorChange/search_human_resource";
 
@@ -52,8 +56,12 @@ public class MajorChangeController {
         System.out.println("----completeMajorChange----");
         System.out.println(newMajorChange);
         newMajorChange.setCheckStatus(1);
-        majorChangeService.updateMajorChange(newMajorChange);
-
+        Integer integer = majorChangeService.updateMajorChange(newMajorChange);
+        if (integer>0){
+            modelMap.addAttribute("mess","删除成功");
+        }else {
+            modelMap.addAttribute("mess","删除失败");
+        }
         System.out.println("----completeMajorChange----");
         return "view/MajorChange/check_list_major_change";
 

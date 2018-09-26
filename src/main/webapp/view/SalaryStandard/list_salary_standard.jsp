@@ -24,10 +24,10 @@
     <script type="text/javascript">
         $(function () {
             $.getJSON("/salaryStandardList", "page=1&rows=10", function (result) {
-                alert("total:" + result.total);
+               /* alert("total:" + result.total);
                 alert("CurrentPage:" + result.CurrentPage);
                 alert("pageCount:" + result.pageCount);
-                alert("rows:" + result.rows);
+                alert("rows:" + result.rows);*/
 
                 tbody = "<tr>" + "<th>薪酬标准编号</th>" + "<th>薪酬标准名称</th>" + "<th>薪酬总额</th>" + "<th>制定人</th>" +
                     "<th>登记人</th>" + "<th>登记时间</th>" + "<th>复核</th>" + "</tr>";
@@ -102,6 +102,9 @@
 
             })
 
+            if ($("#mess").val()!=0){
+                alert($("#mess").val())
+            }
 
         })
     </script>
@@ -109,6 +112,7 @@
 </head>
 
 <body>
+<input type="hidden" id="mess" value="${requestScope.mess}">
 <div style="padding:0px; margin:0px;">
     <ul class="breadcrumb" style="  margin:0px; ">
         <li><a href="#">薪酬标准管理</a></li>

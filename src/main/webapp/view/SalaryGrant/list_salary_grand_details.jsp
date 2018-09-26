@@ -67,7 +67,9 @@
                 $("#salary_paid_sum").text(parseFloat(salaryTotal) + bounsSum + saleSum - deductSum + ", ");
                 $("#salaryPaidSum").val(parseFloat(salaryTotal) + bounsSum + saleSum - deductSum);
             })
-
+            if ($("#mess").val()!=0){
+                alert($("#mess").val())
+            }
 
         })
     </script>
@@ -75,7 +77,7 @@
 </head>
 
 <body>
-
+<input type="hidden" id="mess" value="${requestScope.mess}">
 <div style="padding:0px; margin:0px;">
     <ul class="breadcrumb" style="  margin:0px; ">
         <li><a href="#">薪酬发放管理</a></li>

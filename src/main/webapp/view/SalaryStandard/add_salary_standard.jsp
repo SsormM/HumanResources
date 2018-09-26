@@ -74,11 +74,15 @@
             $("#car_allowance").blur(function () {
                 $("#salary_sum").val(Calculation());
             })
+            if ($("#mess").val()!=0){
+                alert($("#mess").val())
+            }
 
         })
     </script>
 </head>
 <body>
+<input type="hidden" id="mess" value="${requestScope.mess}">
 <div style="padding:0px; margin:0px;">
     <ul class="breadcrumb" style="  margin:0px; ">
         <li><a href="#">薪酬标准管理</a></li>

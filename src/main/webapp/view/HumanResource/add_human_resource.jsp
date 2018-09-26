@@ -11,9 +11,21 @@
     <title>人力资源档案登记</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
-    <link href="../../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/bootstrapValidator-dist/css/bootstrapValidator.min.css"/>
+
+
     <script type="text/javascript" src="/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <%--//时间选择插线--%>
+    <link href="../../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <script type="text/javascript" src="../../jquery/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../../jquery/locales/bootstrap-datetimepicker.zh-CN.js"
+            charset="UTF-8"></script>
+
+    <script type="text/javascript" src="/bootstrapValidator-dist/js/bootstrapValidator.min.js"></script>
+
     <style type="text/css">
         select, input {
             font-size: 20px;
@@ -21,7 +33,7 @@
             height: 30px;
         }
 
-        span {
+        label, span {
             font-size: 20px;
             display: block;
             width: 120px;
@@ -31,6 +43,7 @@
             border: 2px solid black;
         }
     </style>
+
     <script type="text/javascript">
         $(function () {
             $.getJSON("/showAllConfigFileFirstKind", "", function (result) {
@@ -217,31 +230,124 @@
                 })
 
             $.getJSON("/showAllSalaryStandard", "", function (result) {
-                    $("#salary_standard_id").html("");
-                    for (var i = 0; i < result.length; i++) {
-                        $("#salary_standard_id").append(
-                            "<option value='" + result[i].standardId + "'>" + result[i].standardName + "</option>"
-                        )
-                    }
-                })
-
-
-            $("input[name='submit']").click(function () {
-
-                $.getJSON("/register", $("#humanFileForm").serialize(), function (result) {
-                    if (result == 1) {
-                        alert("提交成功，请等待复核")
-                    } else {
-                        alert("提交失败！")
-                    }
-
-                });
-
-
+                $("#salary_standard_id").html("");
+                for (var i = 0; i < result.length; i++) {
+                    $("#salary_standard_id").append(
+                        "<option value='" + result[i].standardId + "'>" + result[i].standardName + "</option>"
+                    )
+                }
             })
+
+            $("button[name='submit']").click(function () {
+                //手动验证表单
+                //$('#myModalForm').data('bootstrapValidator').validate();
+
+                if ($('#humanFileForm').data('bootstrapValidator').isValid()) {
+                    $.getJSON("/register", $("#humanFileForm").serialize(), function (result) {
+                        if (result == 1) {
+                            alert("提交成功，请等待复核")
+                        } else {
+                            alert("提交失败！")
+                        }
+                    })
+                } else {
+                    alert("请正确填写")
+                }
+            })
+
+
+            $('#human_birthday ,#regist_time').datetimepicker({
+                language: "zh-CN",
+                format: 'yyyy-mm-dd',
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+
 
         })
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /**
+             * 下面是进行插件初始化
+             * 你只需传入相应的键值对
+             * */
+            $('#humanFileForm').bootstrapValidator({
+                message: 'This value is not valid',
+                feedbackIcons: {
+                    /*输入框不同状态，显示图片的样式*/
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    /*验证*/
+                    humanName: {
+                        /*键名username和input name值对应*/
+                        message: 'The username is not valid',
+                        validators: {
+                            notEmpty: {
+                                /*非空提示*/
+                                message: '用户名不能为空'
+                            }
+                        }
+
+                    },
+                    humanEmail: {
+                        /*键名username和input name值对应*/
+                        message: 'The email is not valid',
+                        validators: {
+                            emailAddress: {
+                                /*非空提示*/
+                                message: '邮箱地址不合法'
+                            }
+                        }
+                    },
+                    humanMobilephone: {
+                        /*键名username和input name值对应*/
+                        message: 'The humanMobilephone is not valid',
+                        validators: {
+                            notEmpty: {
+                                /*非空提示*/
+                                message: '手机号不能为空'
+                            }
+                        }
+                    },
+                    humanIdCard: {
+                        message: 'The humanIdCard is not valid',
+                        validators: {
+                            notEmpty: {
+                                /*非空提示*/
+                                message: '身份证不能为空'
+                            },
+                            creditCard: {
+                                message: '身份证格式不正确'
+                            }
+                        }
+                    },
+                    registTime: {
+                        message: 'The registTime is not valid',
+                        validators: {
+                            notEmpty: {
+                                /*非空提示*/
+                                message: '建档日期不能为空'
+                            },
+                            date: {
+                                message: '建档日期格式不正确'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
 </head>
 <body>
 <div style="padding:0px; margin:0px;">
@@ -253,12 +359,15 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="table-responsive">
-            <form action="" method="post" role="form" id="humanFileForm">
+            <form action="" class="form-horizontal" method="post" role="form" id="humanFileForm">
                 <table class="table table-bordered" STYLE="background-color:rgba(114,202,204,0.8)">
                     <caption><h1 style="display: block;float:left;width: 50%">人力资源资源档案登记</h1>
-                        <input type="button" style="float:right;width:200px;height:50px;margin: 20px;font-size: 20px"
-                               name="submit"
-                               class="btn btn-success" value="提交复核"/>
+
+                        <button style="float:right;width:200px;height:50px;margin: 20px;font-size: 20px"
+                                name="submit"
+                                class="btn btn-success">提交复核
+                        </button>
+
                     </caption>
                     <colgroup>
                         <col style="width:12.5%">
@@ -292,21 +401,49 @@
                     </tr>
                     <tr>
                         <th><span>姓名</span></th>
-                        <td><input type="text" name="humanName" id="human_name"></td>
+                        <td>
+                            <div class="form-group" style="padding: 0px">
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" name="humanName" id="human_name"/>
+                                </div>
+                            </div>
+                        </td>
+
+
                         <th><span>性别</span></th>
                         <td><select name="humanSex" id="human_sex">
                             <option value="性别" selected></option>
                         </select></td>
                         <th><span>EMAIL</span></th>
-                        <td colspan="2"><input type="text" name="humanEmail" id="human_email"></td>
+                        <td colspan="2">
+                            <div class="form-group" style="padding: 0px">
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" name="humanEmail" id="human_email">
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <th><span>电话</span></th>
-                        <td><input type="text" name="humanTelephone" id="human_telephone"></td>
+                        <td>
+                            <input type="text" name="humanTelephone" id="human_telephone">
+
+                        </td>
                         <th><span>QQ</span></th>
-                        <td><input type="text" name="humanQq" id="human_qq"></td>
+                        <td>
+
+                            <input type="text" name="humanQq" id="human_qq">
+
+                        </td>
                         <th><span>手机</span></th>
-                        <td colspan="2"><input type="text" name="humanMobilephone" id="human_mobilephone"></td>
+                        <td colspan="2">
+                            <div class="form-group" style="padding: 0px">
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" name="humanMobilephone"
+                                           id="human_mobilephone">
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <th><span>地址</span></th>
@@ -347,9 +484,14 @@
                         </select>
                         </td>
                         <th><span>身份证号码</span></th>
-                        <td><input type="text" name="humanIdCard" id="human_id_card"></td>
+                        <td>
+                            <div class="form-group" style="padding: 0px">
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" name="humanIdCard" id="human_id_card"></div>
+                            </div>
+                        </td>
                         <th><span>社会保障号码</span></th>
-                        <td><input type="text" name="humanSocietySecurityId" id="human_society_security_id  "></td>
+                        <td><input type="text" name="humanSocietySecurityId" id="human_society_security_id"></td>
                     </tr>
                     <tr>
                         <th><span>年龄</span></th>
@@ -385,8 +527,13 @@
                     </tr>
                     <tr>
                         <th><span>建档日期</span></th>
-                        <td><input type="text" name="registTime" id="regist_time"
-                                   class="form-control form_date" readonly></td>
+                        <td>
+                            <div class="form-group" style="padding: 0px">
+                                <div class="col-lg-12">
+                                    <input type="text" name="registTime" id="regist_time"
+                                           class="form-control form_date" readonly></div>
+                            </div>
+                        </td>
                         <th><span>特长</span></th>
                         <td><select name="humanSpeciality" id="human_speciality">
                             <option value="特长" selected></option>
@@ -419,6 +566,7 @@
                     </tr>
                     </tbody>
                 </table>
+
                 <div class="row">
                     <div class="col-sm-3 col-sm-offset-4">
                         <input type="button" style="float:right;width:200px;height:50px;margin: 20px;font-size: 20px"
@@ -430,22 +578,40 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <!-- class都是bootstrap定义好的样式，验证是根据input中的name值 -->
+    <form id="testForm" method="post" class="form-horizontal" action="ajaxSubmit.php">
+        <!-- 下面这个div必须要有，插件根据这个进行添加提示 -->
+        <div class="form-group">
+
+            <div class="col-lg-5">
+                <input type="text" class="form-control" name="username"/>
+            </div>
+            6
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-lg-5">
+                <input type="text" class="form-control" name="email"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-lg-5">
+                <input type="password" class="form-control" name="password"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-9 col-lg-offset-3">
+                <button type="submit" class="btn btn-primary">Sign up</button>
+            </div>
+        </div>
+    </form>
+
+</div>
 
 </body>
-<script type="text/javascript" src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../../jquery/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-<script type="text/javascript" src="../../jquery/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-<script type="text/javascript">
-    $('#human_birthday ,#regist_time').datetimepicker({
-        language: "zh-CN",
-        format: 'yyyy-mm-dd',
-        weekStart: 1,
-        todayBtn: 1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0
-    });
-</script>
 </html>
